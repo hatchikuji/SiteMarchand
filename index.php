@@ -44,7 +44,7 @@
                             <a href="new.html" class="nav__link">Nouvelles montres</a>
                         </li>
                         <li class="nav__item">
-                            <a href="connection.php" class="nav__link">Connexion</a>
+                            <a href="connexion.php" class="nav__link">Connexion</a>
                         </li>
                     </ul>
 
@@ -202,9 +202,6 @@
                     </div>
                 </div>
             </section>
-            <!--==================== PRODUCTS ====================-->
-
-
             <!--==================== TESTIMONIAL ====================-->
             <section class="testimonial section container">
                 <div class="testimonial__container grid">
@@ -215,9 +212,9 @@
                                     <i class='bx bxs-quote-alt-left' ></i>
                                 </div>
                                 <p class="testimonial__description">
-                                    They are the best watches that one acquires, also they are always with the latest 
-                                    news and trends, with a very comfortable price and especially with the attention 
-                                    you receive, they are always attentive to your questions.
+                                    Elles sont les meilleures montres que l'on puisse avoir, la dernière collections est
+                                    toujours à jour par rapport à la mode actuelle, avec des prix tout à fait abordables
+                                    avec toute l'attention que l'on vous porte, elles répondront toutes à vos attentes.
                                 </p>
                                 <h3 class="testimonial__date">March 27. 2021</h3>
         

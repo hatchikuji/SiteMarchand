@@ -1,3 +1,7 @@
+<?php
+require 'config.php';
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -19,6 +23,7 @@
     <title>Montres Marchandes</title>
 </head>
 <body>
+<!--==================== HEADER ====================-->
 <header class="header" id="header">
     <nav class="nav container">
         <a href="#" class="nav__logo">
@@ -28,10 +33,10 @@
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="index.php" class="nav__link">Home</a>
+                    <a href="index.php" class="nav__link active-link">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="featured.html" class="nav__link active-link">Populaire</a>
+                    <a href="featured.html" class="nav__link">Populaire</a>
                 </li>
                 <li class="nav__item">
                     <a href="story.html" class="nav__link">Histoire</a>
@@ -53,7 +58,7 @@
         </div>
 
         <div class="nav__btns">
-            <!-- Theme change button -->
+            <!-- Bouton de changement de theme -->
             <i class='bx bx-moon change-theme' id="theme-button"></i>
 
             <div class="nav__shop" id="cart-shop">
@@ -66,52 +71,127 @@
         </div>
     </nav>
 </header>
-<section class="featured section container" id="featured">
-    <h2 class="section__title">
-        Featured
-    </h2>
+<!--==================== CART ====================-->
+<div class="cart" id="cart">
+    <i class='bx bx-x cart__close' id="cart-close"></i>
 
-    <div class="featured__container grid">
-        <article class="featured__card">
-            <span class="featured__tag">Sale</span>
+    <h2 class="cart__title-center">Mon panier</h2>
 
-            <img src="assets/img/featured1.png" alt="" class="featured__img">
-
-            <div class="featured__data">
-                <h3 class="featured__title">Jazzmaster</h3>
-                <span class="featured__price">$1050</span>
+    <div class="cart__container">
+        <article class="cart__card">
+            <div class="cart__box">
+                <img src="assets/img/featured1.png" alt="" class="cart__img">
             </div>
 
-            <button class="button featured__button">ADD TO CART</button>
+            <div class="cart__details">
+                <h3 class="cart__title">Jazzmaster</h3>
+                <span class="cart__price">$1050</span>
+
+                <div class="cart__amount">
+                    <div class="cart__amount-content">
+                                <span class="cart__amount-box">
+                                    <i class='bx bx-minus' ></i>
+                                </span>
+
+                        <span class="cart__amount-number">1</span>
+
+                        <span class="cart__amount-box">
+                                    <i class='bx bx-plus' ></i>
+                                </span>
+                    </div>
+
+                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
+                </div>
+            </div>
         </article>
 
-        <article class="featured__card">
-            <span class="featured__tag">Sale</span>
-
-            <img src="assets/img/featured2.png" alt="" class="featured__img">
-
-            <div class="featured__data">
-                <h3 class="featured__title">Ingersoll</h3>
-                <span class="featured__price">$250</span>
+        <article class="cart__card">
+            <div class="cart__box">
+                <img src="assets/img/featured3.png" alt="" class="cart__img">
             </div>
 
-            <button class="button featured__button">ADD TO CART</button>
+            <div class="cart__details">
+                <h3 class="cart__title">Rose Gold</h3>
+                <span class="cart__price">$850</span>
+
+                <div class="cart__amount">
+                    <div class="cart__amount-content">
+                                <span class="cart__amount-box">
+                                    <i class='bx bx-minus' ></i>
+                                </span>
+
+                        <span class="cart__amount-number">1</span>
+
+                        <span class="cart__amount-box">
+                                    <i class='bx bx-plus' ></i>
+                                </span>
+                    </div>
+
+                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
+                </div>
+            </div>
         </article>
 
-        <article class="featured__card">
-            <span class="featured__tag">Sale</span>
-
-            <img src="assets/img/featured3.png" alt="" class="featured__img">
-
-            <div class="featured__data">
-                <h3 class="featured__title">Rose gold</h3>
-                <span class="featured__price">$890</span>
+        <article class="cart__card">
+            <div class="cart__box">
+                <img src="assets/img/new1.png" alt="" class="cart__img">
             </div>
 
-            <button class="button featured__button">ADD TO CART</button>
+            <div class="cart__details">
+                <h3 class="cart__title">Longines Rose</h3>
+                <span class="cart__price">$980</span>
+
+                <div class="cart__amount">
+                    <div class="cart__amount-content">
+                                <span class="cart__amount-box">
+                                    <i class='bx bx-minus' ></i>
+                                </span>
+
+                        <span class="cart__amount-number">1</span>
+
+                        <span class="cart__amount-box">
+                                    <i class='bx bx-plus' ></i>
+                                </span>
+                    </div>
+
+                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
+                </div>
+            </div>
         </article>
     </div>
+
+    <div class="cart__prices">
+        <span class="cart__prices-item">3 items</span>
+        <span class="cart__prices-total">$2880</span>
+    </div>
+</div>
+
+<!--==================== MAIN ====================-->
+<main class="main">
+<!--==================== NEWSLETTER ====================-->
+<section class="newsletter section container">
+    <div class="newsletter__bg grid">
+        <div>
+            <h2 class="newsletter__title">Subscribe Our <br> Newsletter</h2>
+            <p class="newsletter__description">
+                Don't miss out on your discounts. Subscribe to our email
+                newsletter to get the best offers, discounts, coupons,
+                gifts and much more.
+            </p>
+        </div>
+
+        <form action="" class="newsletter__subscribe">
+            <input type="email" placeholder="Enter your email" class="newsletter__input">
+            <button class="button">
+                SUBSCRIBE
+            </button>
+        </form>
+    </div>
 </section>
+</main>
+
+
+<!--==================== FOOTER ====================-->
 <footer class="footer section">
     <div class="footer__container container grid">
         <div class="footer__content">
@@ -131,7 +211,7 @@
                     <a href="#" class="footer__link">Centre technique</a>
                 </li>
                 <li>
-                    <a href="#" class="footer__link">Service Client</a>
+                    <a href="#" class="footer__link">Service client</a>
                 </li>
                 <li>
                     <a href="#" class="footer__link">A propos</a>
@@ -143,14 +223,14 @@
         </div>
 
         <div class="footer__content">
-            <h3 class="footer__title">Nouvelles montres</h3>
+            <h3 class="footer__title">Home</h3>
 
             <ul class="footer__links">
                 <li>
-                    <a href="#" class="footer__link">Vélos de ville</a>
+                    <a href="#" class="footer__link">Vélo de ville</a>
                 </li>
                 <li>
-                    <a href="#" class="footer__link">Vélos de montagnes</a>
+                    <a href="#" class="footer__link">Vélos de montagne</a>
                 </li>
                 <li>
                     <a href="#" class="footer__link">Electronique</a>
@@ -194,4 +274,4 @@
 <!--=============== MAIN JS ===============-->
 <script src="assets/js/main.js"></script>
 </body>
-</html>
+
