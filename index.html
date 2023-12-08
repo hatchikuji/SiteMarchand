@@ -1,5 +1,5 @@
  <!DOCTYPE html>
-    <html lang="en">
+    <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,29 +16,32 @@
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="assets/css/styles.css">
 
-        <title>Responsive watches website - Bedimcode</title>
+        <title>Montres Marchandes</title>
     </head>
     <body>
         <!--==================== HEADER ====================-->
         <header class="header" id="header">
             <nav class="nav container">
                 <a href="#" class="nav__logo">
-                    <i class='bx bxs-watch nav__logo-icon'></i> Rolex
+                    <i class='bx bxs-watch nav__logo-icon'></i> Montres
                 </a>
 
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="#home" class="nav__link active-link">Home</a>
+                            <a href="index.html" class="nav__link active-link">Home</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#featured" class="nav__link">Featured</a>
+                            <a href="featured.html" class="nav__link">Populaire</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#products" class="nav__link">Products</a>
+                            <a href="story.html" class="nav__link">Histoire</a>
                         </li>
                         <li class="nav__item">
-                            <a href="#new" class="nav__link">New</a>
+                            <a href="product.html" class="nav__link">Produits</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="new.html" class="nav__link">Nouvelles montres</a>
                         </li>
                     </ul>
 
@@ -48,7 +51,7 @@
                 </div>
 
                 <div class="nav__btns">
-                    <!-- Theme change button -->
+                    <!-- Bouton de changement de theme -->
                     <i class='bx bx-moon change-theme' id="theme-button"></i>
 
                     <div class="nav__shop" id="cart-shop">
@@ -66,7 +69,7 @@
         <div class="cart" id="cart">
             <i class='bx bx-x cart__close' id="cart-close"></i>
 
-            <h2 class="cart__title-center">My Cart</h2>
+            <h2 class="cart__title-center">Mon panier</h2>
 
             <div class="cart__container">
                 <article class="cart__card">
@@ -196,145 +199,8 @@
                     </div>
                 </div>
             </section>
-
-            <!--==================== FEATURED ====================-->
-            <section class="featured section container" id="featured">
-                <h2 class="section__title">
-                    Featured
-                </h2>
-
-                <div class="featured__container grid">
-                    <article class="featured__card">
-                        <span class="featured__tag">Sale</span>
-
-                        <img src="assets/img/featured1.png" alt="" class="featured__img">
-
-                        <div class="featured__data">
-                            <h3 class="featured__title">Jazzmaster</h3>
-                            <span class="featured__price">$1050</span>
-                        </div>
-
-                        <button class="button featured__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="featured__card">
-                        <span class="featured__tag">Sale</span>
-
-                        <img src="assets/img/featured2.png" alt="" class="featured__img">
-
-                        <div class="featured__data">
-                            <h3 class="featured__title">Ingersoll</h3>
-                            <span class="featured__price">$250</span>
-                        </div>
-
-                        <button class="button featured__button">ADD TO CART</button>
-                    </article>
-
-                    <article class="featured__card">
-                        <span class="featured__tag">Sale</span>
-
-                        <img src="assets/img/featured3.png" alt="" class="featured__img">
-
-                        <div class="featured__data">
-                            <h3 class="featured__title">Rose gold</h3>
-                            <span class="featured__price">$890</span>
-                        </div>
-
-                        <button class="button featured__button">ADD TO CART</button>
-                    </article>
-                </div>
-            </section>
-
-            <!--==================== STORY ====================-->
-            <section class="story section container">
-                <div class="story__container grid">
-                    <div class="story__data">
-                        <h2 class="section__title story__section-title">
-                            Our Story
-                        </h2>
-    
-                        <h1 class="story__title">
-                            Inspirational Watch of <br> this year
-                        </h1>
-    
-                        <p class="story__description">
-                            The latest and modern watches of this year, is available in various 
-                            presentations in this store, discover them now.
-                        </p>
-    
-                        <a href="#" class="button button--small">Discover</a>
-                    </div>
-
-                    <div class="story__images">
-                        <img src="assets/img/story.png" alt="" class="story__img">
-                        <div class="story__square"></div>
-                    </div>
-                </div>
-            </section>
-
             <!--==================== PRODUCTS ====================-->
-            <section class="products section container" id="products">
-                <h2 class="section__title">
-                    Products
-                </h2>
 
-                <div class="products__container grid">
-                    <article class="products__card">
-                        <img src="assets/img/product1.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Spirit rose</h3>
-                        <span class="products__price">$1500</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="assets/img/product2.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Khaki pilot</h3>
-                        <span class="products__price">$1350</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="assets/img/product3.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Jubilee black</h3>
-                        <span class="products__price">$870</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="assets/img/product4.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Fosil me3</h3>
-                        <span class="products__price">$650</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-
-                    <article class="products__card">
-                        <img src="assets/img/product5.png" alt="" class="products__img">
-
-                        <h3 class="products__title">Duchen</h3>
-                        <span class="products__price">$950</span>
-
-                        <button class="products__button">
-                            <i class='bx bx-shopping-bag'></i>
-                        </button>
-                    </article>
-                </div>
-            </section>
 
             <!--==================== TESTIMONIAL ====================-->
             <section class="testimonial section container">
@@ -420,70 +286,7 @@
                 </div>
             </section>
 
-            <!--==================== NEW ====================-->
-            <section class="new section container" id="new">
-                <h2 class="section__title">
-                    New Arrivals
-                </h2>
-                
-                <div class="new__container">
-                    <div class="swiper new-swiper">
-                        <div class="swiper-wrapper">
-                            <article class="new__card swiper-slide">
-                                <span class="new__tag">New</span>
-        
-                                <img src="assets/img/new1.png" alt="" class="new__img">
-        
-                                <div class="new__data">
-                                    <h3 class="new__title">Longines rose</h3>
-                                    <span class="new__price">$980</span>
-                                </div>
-        
-                                <button class="button new__button">ADD TO CART</button>
-                            </article>
 
-                            <article class="new__card swiper-slide">
-                                <span class="new__tag">New</span>
-        
-                                <img src="assets/img/new2.png" alt="" class="new__img">
-        
-                                <div class="new__data">
-                                    <h3 class="new__title">Jazzmaster</h3>
-                                    <span class="new__price">$1150</span>
-                                </div>
-        
-                                <button class="button new__button">ADD TO CART</button>
-                            </article>
-
-                            <article class="new__card swiper-slide">
-                                <span class="new__tag">New</span>
-        
-                                <img src="assets/img/new3.png" alt="" class="new__img">
-        
-                                <div class="new__data">
-                                    <h3 class="new__title">Dreyfuss gold</h3>
-                                    <span class="new__price">$750</span>
-                                </div>
-        
-                                <button class="button new__button">ADD TO CART</button>
-                            </article>
-
-                            <article class="new__card swiper-slide">
-                                <span class="new__tag">New</span>
-        
-                                <img src="assets/img/new4.png" alt="" class="new__img">
-        
-                                <div class="new__data">
-                                    <h3 class="new__title">Portuguese rose</h3>
-                                    <span class="new__price">$1590</span>
-                                </div>
-        
-                                <button class="button new__button">ADD TO CART</button>
-                            </article>                       
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <!--==================== NEWSLETTER ====================-->
             <section class="newsletter section container">
@@ -511,54 +314,54 @@
         <footer class="footer section">
             <div class="footer__container container grid">
                 <div class="footer__content">
-                    <h3 class="footer__title">Our information</h3>
+                    <h3 class="footer__title">Nos informations</h3>
 
                     <ul class="footer__list">
-                        <li>1234 - Peru</li>
-                        <li>La Libertad 43210</li>
-                        <li>123-456-789</li>
+                        <li>76600 - France</li>
+                        <li>StjoSup</li>
+                        <li>01 23 45 67 89</li>
                     </ul>
                 </div>
                 <div class="footer__content">
-                    <h3 class="footer__title">About Us</h3>
+                    <h3 class="footer__title">A propos</h3>
 
                     <ul class="footer__links">
                         <li>
-                            <a href="#" class="footer__link">Support Center</a>
+                            <a href="#" class="footer__link">Centre technique</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">Customer Support</a>
+                            <a href="#" class="footer__link">Service client</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">About Us</a>
+                            <a href="#" class="footer__link">A propos</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">Copy Right</a>
+                            <a href="#" class="footer__link">Copyright</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="footer__content">
-                    <h3 class="footer__title">Product</h3>
+                    <h3 class="footer__title">Home</h3>
 
                     <ul class="footer__links">
                         <li>
-                            <a href="#" class="footer__link">Road bikes</a>
+                            <a href="#" class="footer__link">Vélo de ville</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">Mountain bikes</a>
+                            <a href="#" class="footer__link">Vélos de montagne</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">Electric</a>
+                            <a href="#" class="footer__link">Electronique</a>
                         </li>
                         <li>
-                            <a href="#" class="footer__link">Accesories</a>
+                            <a href="#" class="footer__link">Accessoires</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="footer__content">
-                    <h3 class="footer__title">Social</h3>
+                    <h3 class="footer__title">Sociaux</h3>
 
                     <ul class="footer__social">
                         <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
@@ -576,7 +379,7 @@
                 </div>
             </div>
 
-            <span class="footer__copy">&#169; Bedimcode. All rigths reserved</span>
+            <span class="footer__copy">&#169; Brillant. All rigths reserved</span>
         </footer>
 
         <!--=============== SCROLL UP ===============-->
