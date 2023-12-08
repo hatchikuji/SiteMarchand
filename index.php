@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="fr">
     <head>
         <meta charset="UTF-8">
@@ -29,7 +29,7 @@
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="index.html" class="nav__link active-link">Home</a>
+                            <a href="index.php" class="nav__link active-link">Home</a>
                         </li>
                         <li class="nav__item">
                             <a href="featured.html" class="nav__link">Populaire</a>
@@ -42,6 +42,9 @@
                         </li>
                         <li class="nav__item">
                             <a href="new.html" class="nav__link">Nouvelles montres</a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="connection.php" class="nav__link">Connexion</a>
                         </li>
                     </ul>
 
