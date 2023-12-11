@@ -185,19 +185,19 @@
                     </div>
     
                     <div class="home__data">
-                        <h1 class="home__title">NEW WATCH <br> COLLECTIONS B720</h1>
+                        <h1 class="home__title">NOUVELLE MONTRE <br>COLLECTION B720</h1>
                         <p class="home__description">
-                            Latest arrival of the new imported watches of the B720 series, 
-                            with a modern and resistant design.
+                            Dernier arrivage de la nouvelle commande de montres série B720,
+                            avec un nouveau modèle.
                         </p>
                         <span class="home__price">$1245</span>
 
                         <div class="home__btns">
                             <a href="#" class="button button--gray button--small">
-                                Discover
+                                Découvez
                             </a>
 
-                            <button class="button home__button">ADD TO CART</button>
+                            <button class="button home__button">AJOUTER AU PANIER</button>
                         </div>
                     </div>
                 </div>
@@ -216,14 +216,14 @@
                                     toujours à jour par rapport à la mode actuelle, avec des prix tout à fait abordables
                                     avec toute l'attention que l'on vous porte, elles répondront toutes à vos attentes.
                                 </p>
-                                <h3 class="testimonial__date">March 27. 2021</h3>
+                                <h3 class="testimonial__date">15 Novembre 2023</h3>
         
                                 <div class="testimonial__perfil">
                                     <img src="assets/img/testimonial1.jpg" alt="" class="testimonial__perfil-img">
         
                                     <div class="testimonial__perfil-data">
-                                        <span class="testimonial__perfil-name">Lee Doe</span>
-                                        <span class="testimonial__perfil-detail">Director of a company</span>
+                                        <span class="testimonial__perfil-name">Swann Brillant</span>
+                                        <span class="testimonial__perfil-detail">Directeur général</span>
                                     </div>
                                 </div>
                             </div>
@@ -233,18 +233,18 @@
                                     <i class='bx bxs-quote-alt-left' ></i>
                                 </div>
                                 <p class="testimonial__description">
-                                    They are the best watches that one acquires, also they are always with the latest 
-                                    news and trends, with a very comfortable price and especially with the attention 
-                                    you receive, they are always attentive to your questions.
+                                    Montres exceptionnelles qui peuvent vous accompagner autant dans la vie de tout les
+                                    jours qu'aussi bien pour déjeuner avec de la famille que pour vous démarquer lors d'un
+                                    repas d'entreprise.
                                 </p>
-                                <h3 class="testimonial__date">March 27. 2021</h3>
+                                <h3 class="testimonial__date">9 Décembre 2023</h3>
         
                                 <div class="testimonial__perfil">
                                     <img src="assets/img/testimonial2.jpg" alt="" class="testimonial__perfil-img">
         
                                     <div class="testimonial__perfil-data">
-                                        <span class="testimonial__perfil-name">Samantha Mey</span>
-                                        <span class="testimonial__perfil-detail">Director of a company</span>
+                                        <span class="testimonial__perfil-name">Lucas Claire</span>
+                                        <span class="testimonial__perfil-detail">Directeur Marketing</span>
                                     </div>
                                 </div>
                             </div>
@@ -254,18 +254,18 @@
                                     <i class='bx bxs-quote-alt-left' ></i>
                                 </div>
                                 <p class="testimonial__description">
-                                    They are the best watches that one acquires, also they are always with the latest 
-                                    news and trends, with a very comfortable price and especially with the attention 
-                                    you receive, they are always attentive to your questions.
+                                    Elles sont tout aussi solides qu'élégantes, que vous pratiquez des sport extrêmes ou
+                                    bien que vous souhaitez simplement un usage quotidient, elles ne riquent pas de vous
+                                    décevoir avec une durée de vie aussi longue que notre expérience.
                                 </p>
-                                <h3 class="testimonial__date">March 27. 2021</h3>
+                                <h3 class="testimonial__date">2 Octobre 2023</h3>
         
                                 <div class="testimonial__perfil">
                                     <img src="assets/img/testimonial3.jpg" alt="" class="testimonial__perfil-img">
         
                                     <div class="testimonial__perfil-data">
-                                        <span class="testimonial__perfil-name">Raul Zaman</span>
-                                        <span class="testimonial__perfil-detail">Director of a company</span>
+                                        <span class="testimonial__perfil-name">Tony Duchemin</span>
+                                        <span class="testimonial__perfil-detail">Chef du service qualité</span>
                                     </div>
                                 </div>
                             </div>
@@ -292,11 +292,11 @@
             <section class="newsletter section container">
                 <div class="newsletter__bg grid">
                     <div>
-                        <h2 class="newsletter__title">Subscribe Our <br> Newsletter</h2>
+                        <h2 class="newsletter__title">Abonnez-vous<br> Newsletter</h2>
                         <p class="newsletter__description">
-                            Don't miss out on your discounts. Subscribe to our email 
-                            newsletter to get the best offers, discounts, coupons, 
-                            gifts and much more.
+                            Ne manquez surtout pas nos promotions. Abonnez-vous à notre
+                            newsletter pour avoir les meilleures offres, réductions, coupons,
+                            cadeaux et plus encore.
                         </p>
                     </div>
 
