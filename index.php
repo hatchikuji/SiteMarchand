@@ -1,3 +1,7 @@
+<?php
+require 'config.php';
+
+?>
 <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -301,9 +305,9 @@
                     </div>
 
                     <form action="" class="newsletter__subscribe">
-                        <input type="email" placeholder="Enter your email" class="newsletter__input">
+                        <input type="email" placeholder="Entrez votre mail" class="newsletter__input">
                         <button class="button">
-                            SUBSCRIBE
+                            S'ABONNER
                         </button>
                     </form>
                 </div>
