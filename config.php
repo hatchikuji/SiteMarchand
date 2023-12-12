@@ -5,6 +5,10 @@ const DB_USERNAME = 'root';
 const DB_PASSWORD = '';
 const DB_NAME = '';
 
+const DB_SITE = 'site';
+const DB_SITEP = 'site_m';
+const DB_SITE_NOM = 'site_marchand_swann';
+
 // Connexion à phpmydmin
 $connect_root = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
@@ -23,7 +27,8 @@ else {
     // on se déconnecte de 'root' afin de se connecter avec l'utilisateur 'site_m'
 }
 mysqli_close($connect_root);
-$connect_site = mysqli_connect(DB_SERVER, 'site', 'site_m', 'site_marchand_swann');
+$connect_site = mysqli_connect
+(DB_SERVER, DB_SITE, DB_SITEP, DB_SITE_NOM);
 
 mysqli_query($connect_site,"CREATE DATABASE IF NOT EXISTS site_marchand_swann;");
 

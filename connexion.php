@@ -1,12 +1,47 @@
 <?php
-require 'config.php';
+require("config.php");
+session_start();
+
+ // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
+/** @var mysqli $connect_site */
+$prenom = stripslashes($_REQUEST['prenom']);
+$prenom = mysqli_real_escape_string($connect_site, $prenom);
+
+$nom = stripslashes($_REQUEST['nom']);
+$nom = mysqli_real_escape_string($connect_site, $nom);
+
+$password = stripslashes($_REQUEST['password']);
+$password = mysqli_real_escape_string($connect_site, $password);
+$confirm_p = stripcslashes($_REQUEST['confirm_password']);
+if($password != $confirm_p){
+    $message = "Le mot de passe ne correspond pas";
+}
+$date = stripslashes($_REQUEST['date']);
+$date = mysqli_real_escape_string($connect_site, $date);
+
+$adresse = stripslashes($_REQUEST['adresse']);
+$adresse = mysqli_real_escape_string($connect_site, $adresse);
+
+$mail = stripslashes($_REQUEST['email']);
+$mail = mysqli_real_escape_string($connect_site, $mail);
+
+$telephone = stripslashes($_REQUEST['telephone']);
+$telephone = mysqli_real_escape_string($connect_site, $telephone);
+mysqli_query($connect_site,"CREATE USER '$prenom'@'localhost' IDENTIFIED BY '$password';");
+mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateur (nom, prenom, mdp, adresse, email, numero_tel) 
+    VALUES ('$nom', '$prenom','$password','$adresse', '$mail', '$telephone')");
+    echo "
+<div class='sucess'>
+             <h3>Vous êtes inscrit avec succès.</h3>
+             <p>Cliquez ici pour vous <a href='index.php'>connecter</a></p>
+       </div>";
 
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta nom="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FAVICON ===============-->
     <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
@@ -168,29 +203,40 @@ require 'config.php';
 
 <!--==================== MAIN ====================-->
 <main class="main">
-<!--==================== NEWSLETTER ====================-->
-<section class="newsletter section container">
-    <div class="newsletter__bg grid">
-        <div>
-            <h2 class="newsletter__title">Subscribe Our <br> Newsletter</h2>
-            <p class="newsletter__description">
-                Don't miss out on your discounts. Subscribe to our email
-                newsletter to get the best offers, discounts, coupons,
-                gifts and much more.
-            </p>
+    <section>
+        <div class="home__container container grid">
+            <div class="home__data">
+                <form class="box" action="" method="post">
+                    <h2></h2>
+                    <label>
+                        <input type="text" class="box-input" name="prenom" placeholder="Prénom" required>
+                    </label>
+                    <label>
+                        <input type="text" class="box-input" name="nom" placeholder="Nom" required>
+                    </label>
+                    <label>
+                        <input type="password" class="box-input" name="password" placeholder="Mot de passe" required>
+                    </label>
+                    <label>
+                        <input type="password" class="box-input" name="confirm_password" placeholder="Confirmez le mot de passe" required>
+                    </label>
+                    <label>
+                        <input type="date" class="box-input" name="date_naissance" placeholder="JJ/MM/YYYY" required>
+                    </label>
+                    <label>
+                        <input type="text" class="box-input" name="adresse" placeholder="123 Rue Exemple, La Ville" required>
+                    </label>
+                    <label>
+                        <input type="email" class="box-input" name="email" placeholder="adresse@mail.com" required>
+                    </label>
+                    <label>
+                        <input type="tel" class="box-input" name="numero_tel" placeholder="0123456789" required>
+                    </label>
+                    <input type="submit" value="S'inscrire" name="sinscrire" class="box-button">
+                </form>
+            </div>
         </div>
-
-        <form action="" class="newsletter__subscribe">
-            <input type="email" placeholder="Enter your email" class="newsletter__input">
-            <button class="button">
-                SUBSCRIBE
-            </button>
-        </form>
-    </div>
-</section>
-</main>
-
-
+    </section>
 <!--==================== FOOTER ====================-->
 <footer class="footer section">
     <div class="footer__container container grid">
@@ -274,4 +320,3 @@ require 'config.php';
 <!--=============== MAIN JS ===============-->
 <script src="assets/js/main.js"></script>
 </body>
-
