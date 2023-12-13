@@ -33,6 +33,7 @@ mysqli_query($connect_site,"CREATE TABLE IF NOT EXISTS `site_marchand_swann`.`ut
         `mdp` TEXT NOT NULL,
         `date_naissance` DATE NOT NULL,
         `adresse` TEXT NOT NULL,
+        `code_postal` INT NOT NULL,
         `email` TEXT NOT NULL,
         `numero_tel` TEXT NOT NULL,
         `id` SERIAL NOT NULL ) ENGINE = MyISAM;");

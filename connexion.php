@@ -4,7 +4,7 @@ session_start();
 
  // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
 /** @var mysqli $connect_site */
-if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST['date_naissance'],$_REQUEST['adresse'],$_REQUEST['email'],$_REQUEST['numero_tel'])) {
+if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST['date_naissance'],$_REQUEST['adresse'],$_REQUEST['code_postal'],$_REQUEST['email'],$_REQUEST['numero_tel'])) {
     $prenom = stripslashes($_REQUEST['prenom']);
     $prenom = mysqli_real_escape_string($connect_site, $prenom);
 
@@ -20,14 +20,17 @@ if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST
     $adresse = stripslashes($_REQUEST['adresse']);
     $adresse = mysqli_real_escape_string($connect_site, $adresse);
 
+    $code_postal = stripslashes($_REQUEST['code_postal']);
+    $code_postal = mysqli_real_escape_string($connect_site, $code_postal);
+
     $mail = stripslashes($_REQUEST['email']);
     $mail = mysqli_real_escape_string($connect_site, $mail);
 
     $telephone = stripslashes($_REQUEST['numero_tel']);
     $telephone = mysqli_real_escape_string($connect_site, $telephone);
 
-    $inscrit = mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (nom, prenom, mdp, date_naissance, adresse, email, numero_tel) 
-    VALUES ('$nom', '$prenom','$password','$date','$adresse', '$mail', '$telephone')");
+    $inscrit = mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (nom, prenom, mdp, date_naissance, adresse,code_postal, email, numero_tel) 
+    VALUES ('$nom', '$prenom','$password','$date','$adresse','$code_postal', '$mail', '$telephone')");
     if ($inscrit) {
         echo "
         <div class='sucess'>
@@ -224,13 +227,18 @@ if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST
                 </div>
                 <div class="__champ">
                     <label>
-                        <input type="date" class="box-input" name="date_naissance" placeholder="JJ/MM/YYYY" required>
+                        <input type="text" class="box-input" name="date_naissance" placeholder="Date de naissance" onfocus="(this.type='date')" onblur="(this.type='text')" required>
                     </label>
                 </div>
                 <div class="__champ">
                     <label>
                         <input type="text" class="box-input" name="adresse" placeholder="123 Rue Exemple, La Ville"
                                required>
+                    </label>
+                </div>
+                <div class="__champ">
+                    <label>
+                        <input type="number" class="box-input" name="code_postal" placeholder="76600" required>
                     </label>
                 </div>
                 <div class="__champ">
