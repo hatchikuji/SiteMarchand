@@ -2,10 +2,9 @@
 require("config.php");
 session_start();
 
-//formulaire pour s'inscrire
-/* @var mysqli $connect_site */
-if (isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST['date_naissance'],
-    $_REQUEST['adresse'],$_REQUEST['email'],$_REQUEST['numero_tel'])) {
+ // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
+/** @var mysqli $connect_site */
+if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST['date_naissance'],$_REQUEST['adresse'],$_REQUEST['email'],$_REQUEST['numero_tel'])) {
     $prenom = stripslashes($_REQUEST['prenom']);
     $prenom = mysqli_real_escape_string($connect_site, $prenom);
 
@@ -27,8 +26,15 @@ if (isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUES
     $telephone = stripslashes($_REQUEST['numero_tel']);
     $telephone = mysqli_real_escape_string($connect_site, $telephone);
 
-    mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (nom, prenom, mdp, date_naissance, adresse, email, numero_tel) 
-    VALUES ('$nom', '$prenom', '$password','$date', '$adresse', '$mail', '$telephone')");
+    $inscrit = mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (nom, prenom, mdp, date_naissance, adresse, email, numero_tel) 
+    VALUES ('$nom', '$prenom','$password','$date','$adresse', '$mail', '$telephone')");
+    if ($inscrit) {
+        echo "
+        <div class='sucess'>
+             <h3>Vous êtes inscrit avec succès.</h3>
+             <p>Cliquez ici pour vous <a href='index.php'>connecter</a></p>
+       </div>";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -198,49 +204,49 @@ if (isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUES
 <!--==================== MAIN ====================-->
 <main class="main">
     <section>
-        <div class="home__container container grid">
-            <div class="home__data">
-                <form class="box" action="" method="post">
-                    <div class="">
-                        <label>
-                            <input type="text" class="box-input" name="prenom" placeholder="Prénom" required>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="text" class="box-input" name="nom" placeholder="Nom" required>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="password" class="box-input" name="password" placeholder="Mot de passe" required>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="date" class="box-input" name="date_naissance" placeholder="" required>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="text" class="box-input" name="adresse" placeholder="123 Rue Exemple, La Ville" required>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="email" class="box-input" name="email" placeholder="adresse@mail.com" required>
-                        </label>
-                    </div>
-                    <div>
-                        <label>
-                            <input type="tel" class="box-input" name="numero_tel" placeholder="0123456789" required>
-                        </label>
-                    </div>
-                    <div>
-                        <input type="submit" value="S'inscrire" name="submit" class="box-button">
-                    </div>
-                </form>
-            </div>
+        <div class="formulaire_container">
+            <h3 class="formulaire_title">Champs d'inscription</h3>
+            <form class="formulaire_box" action="" method="post">
+                <div class="__champ">
+                    <label>
+                        <input type="text" class="box-input" name="prenom" placeholder="Prénom" required>
+                    </label>
+                </div>
+                <div class="__champ">
+                    <label>
+                        <input type="text" class="box-input" name="nom" placeholder="Nom" required>
+                    </label>
+                </div>
+                <div class="__champ">
+                    <label>
+                        <input type="password" class="box-input" name="password" placeholder="Mot de passe" required>
+                    </label>
+                </div>
+                <div class="__champ">
+                    <label>
+                        <input type="date" class="box-input" name="date_naissance" placeholder="JJ/MM/YYYY" required>
+                    </label>
+                </div>
+                <div class="__champ">
+                    <label>
+                        <input type="text" class="box-input" name="adresse" placeholder="123 Rue Exemple, La Ville"
+                               required>
+                    </label>
+                </div>
+                <div class="__champ">
+                    <label>
+                        <input type="email" class="box-input" name="email" placeholder="adresse@mail.com" required>
+                    </label>
+                </div>
+                <div class="__champ">
+                    <label>
+                        <input type="tel" class="box-input" name="numero_tel" placeholder="0123456789" required>
+                    </label>
+                </div>
+                <div class="__champ">
+                    <input type="submit" value="S'inscrire" name="sinscrire" class="box-button">
+                </div>
+            </form>
         </div>
     </section>
 <!--==================== FOOTER ====================-->
