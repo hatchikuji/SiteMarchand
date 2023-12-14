@@ -1,42 +1,37 @@
 <?php
-require("config.php");
-session_start();
+include("config.php");
 
+$connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
 // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
-/** @var mysqli $connect_site */
-if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST['date_naissance'],$_REQUEST['adresse'],$_REQUEST['code_postal'],$_REQUEST['email'],$_REQUEST['numero_tel'])) {
-    $prenom = stripslashes($_REQUEST['prenom']);
-    $prenom = mysqli_real_escape_string($connect_site, $prenom);
 
-    $nom = stripslashes($_REQUEST['nom']);
-    $nom = mysqli_real_escape_string($connect_site, $nom);
+if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $_POST['date_naissance'],$_POST['adresse'],$_POST['code_postal'],$_POST['email'],$_POST['numero_tel'])) {
+    $pseudo = mysqli_real_escape_string($connect_site, stripcslashes($_POST['pseudo']));
 
-    $password = stripslashes($_REQUEST['password']);
-    $password = mysqli_real_escape_string($connect_site, $password);
+    if (mysqli_num_rows(mysqli_query($connect_site,"SELECT * FROM utilisateurs WHERE pseudo='".$_POST['pseudo']."'"))==1){//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
+        echo '<script type="text/javascript">alert("Pseudo déjà utilisé")</script>';
+    }else {
+        //on utilise la méthode mysqli_real_escape_string pour pouvoir executer les requêtes SQL sur les variables
+        $prenom = mysqli_real_escape_string($connect_site,stripslashes($_POST['prenom']));
 
-    $date = stripslashes($_REQUEST['date_naissance']);
-    $date = mysqli_real_escape_string($connect_site, $date);
+        $nom = mysqli_real_escape_string($connect_site, stripslashes($_POST['nom']));
 
-    $adresse = stripslashes($_REQUEST['adresse']);
-    $adresse = mysqli_real_escape_string($connect_site, $adresse);
+        $password = mysqli_real_escape_string($connect_site, stripslashes($_POST['password']));
 
-    $code_postal = stripslashes($_REQUEST['code_postal']);
-    $code_postal = mysqli_real_escape_string($connect_site, $code_postal);
+        $date = mysqli_real_escape_string($connect_site, stripslashes($_POST['date_naissance']));
 
-    $mail = stripslashes($_REQUEST['email']);
-    $mail = mysqli_real_escape_string($connect_site, $mail);
+        $adresse = mysqli_real_escape_string($connect_site, stripslashes($_POST['adresse']));
 
-    $telephone = stripslashes($_REQUEST['numero_tel']);
-    $telephone = mysqli_real_escape_string($connect_site, $telephone);
+        $code_postal = mysqli_real_escape_string($connect_site, stripslashes($_POST['code_postal']));
 
-    $inscrit = mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (nom, prenom, mdp, date_naissance, adresse,code_postal, email, numero_tel) 
-    VALUES ('$nom', '$prenom','$password','$date','$adresse','$code_postal', '$mail', '$telephone')");
-    if ($inscrit) {
-        echo "
-        <div class='sucess'>
-             <h3>Vous êtes inscrit avec succès.</h3>
-             <p>Cliquez ici pour vous <a href='index.php'>connecter</a></p>
-       </div>";
+        $mail = mysqli_real_escape_string($connect_site, stripslashes($_POST['email']));
+
+        $telephone = stripslashes($_POST['numero_tel']);
+        $telephone = mysqli_real_escape_string($connect_site, $telephone);
+        $inscrit = mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (pseudo, nom, prenom, mdp, date_naissance, adresse,code_postal, email, numero_tel) 
+        VALUES ('$pseudo','$nom', '$prenom',sha1('$password'),'$date','$adresse','$code_postal', '$mail', '$telephone')");
+        if ($inscrit) {
+            header('index.php');
+        }
     }
 }
 ?>
@@ -88,6 +83,9 @@ if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST
                 <li class="nav__item">
                     <a href="connexion.php" class="nav__link">Connexion</a>
                 </li>
+                <li class="nav__item">
+                    <a href="inscription.php" class="nav__link">Inscription</a>
+                </li>
             </ul>
 
             <div class="nav__close" id="nav-close">
@@ -111,41 +109,29 @@ if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST
         <h2 class="section__title">
             Champs d'inscription
         </h2>
-        <div class="formulaire_container grid">
-            <form class="formulaire_box" action="" method="post">
+        <div class="formulaire_container">
+            <form class="formulaire_box grid" action="" method="post">
                 <div class="__champ">
                     <label>
+                        <input type="text" class="box-input" name="pseudo" placeholder="Pseudo" required>
                         <input type="text" class="box-input" name="prenom" placeholder="Prénom" required>
                     </label>
                 </div>
                 <div class="__champ">
                     <label>
                         <input type="text" class="box-input" name="nom" placeholder="Nom" required>
-                    </label>
-                </div>
-                <div class="__champ">
-                    <label>
                         <input type="password" class="box-input" name="password" placeholder="Mot de passe" required>
                     </label>
                 </div>
                 <div class="__champ">
                     <label>
-                        <input type="text" class="box-input" name="date_naissance" placeholder="Date de naissance" onfocus="(this.type='date')" onblur="(this.type='text')" required>
-                    </label>
-                </div>
-                <div class="__champ">
-                    <label>
-                        <input type="text" class="box-input" name="adresse" placeholder="123 Rue Exemple, La Ville"
-                               required>
+                        <input type="date" class="box-input" name="date_naissance" required>
+                        <input type="text" class="box-input" name="adresse" placeholder="123 Rue Exemple, La Ville" required>
                     </label>
                 </div>
                 <div class="__champ">
                     <label>
                         <input type="number" class="box-input" name="code_postal" placeholder="76600" required>
-                    </label>
-                </div>
-                <div class="__champ">
-                    <label>
                         <input type="email" class="box-input" name="email" placeholder="adresse@mail.com" required>
                     </label>
                 </div>
@@ -156,7 +142,8 @@ if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST
                 </div>
                 <div class="__champ__button">
                     <input type="submit" value="S'inscrire" name="sinscrire" class="__form-button">
-                    <a href="register.php" class="__form-button">Connexion</a>
+                    <br class="brrr">
+                    <a href="sample/register.php" class="__form-button">Se connecter</a>
                 </div>
             </form>
         </div>

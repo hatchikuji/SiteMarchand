@@ -298,12 +298,57 @@ body.dark-theme {
   color: var(--first-color);
 }
 /*=============== FORMULAIRE ============*/
-.section_inscription{
+.formulaire_container {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto); /* Trois lignes de hauteur automatique */
+  gap: 10px;
+}
 
+.__champ {
+  margin-bottom: 10px;
+}
+
+.__champ label {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-input {
+  margin-bottom: 5px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border-block-color: black;
+}
+
+.__champ__button {
+  grid-column: span 2; /* Étend le champ sur deux colonnes */
+}
+.brrr{
+  content: "";
+  margin: 1em;
+  display: block;
+  font-size: 24%;
+}
+.__form-button {
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--first-color);;
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.__form-button:hover {
+  background-color: var(--first-color);;
 }
 
 .formulaire_container{
    justify-items: center;
+  width: 50%;
+  margin: auto;
 }
 .formulaire_title{
   align-self: center;
@@ -319,6 +364,8 @@ body.dark-theme {
 }
 .__champ{
     padding: 1%;
+    display:contents;
+
 }
 .__champ__button{
   display: contents;
