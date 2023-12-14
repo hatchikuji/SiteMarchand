@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require("config.php");
 session_start();
 
 // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
@@ -32,7 +32,11 @@ if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST
     $inscrit = mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (nom, prenom, mdp, date_naissance, adresse,code_postal, email, numero_tel) 
     VALUES ('$nom', '$prenom','$password','$date','$adresse','$code_postal', '$mail', '$telephone')");
     if ($inscrit) {
-        session_destroy();
+        echo "
+        <div class='sucess'>
+             <h3>Vous êtes inscrit avec succès.</h3>
+             <p>Cliquez ici pour vous <a href='index.php'>connecter</a></p>
+       </div>";
     }
 }
 ?>
@@ -152,7 +156,7 @@ if(isset($_REQUEST['prenom'], $_REQUEST['nom'], $_REQUEST['password'], $_REQUEST
                 </div>
                 <div class="__champ__button">
                     <input type="submit" value="S'inscrire" name="sinscrire" class="__form-button">
-                    <a href="sample/register.php" class="__form-button">Connexion</a>
+                    <a href="register.php" class="__form-button">Connexion</a>
                 </div>
             </form>
         </div>

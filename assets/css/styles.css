@@ -298,30 +298,44 @@ body.dark-theme {
   color: var(--first-color);
 }
 /*=============== FORMULAIRE ============*/
+.section_inscription{
+
+}
+
 .formulaire_container{
-  padding-top: 12%;
+   justify-items: center;
 }
 .formulaire_title{
-  display: flex;
-  justify-content: center;
-  align-content: stretch;
-  flex-wrap: wrap;
+  align-self: center;
 }
 
 .formulaire_box {
   margin-inline: auto;
-  position: relative;
-  align-self: stretch;
   margin: auto;
   display: flex;
-  align-content: flex-end;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: nowrap;
+  flex-direction: column;
 }
 .__champ{
-  padding: 1%;
+    padding: 1%;
+}
+.__champ__button{
+  display: contents;
+}
+.__inscrire{
+  padding-left: 1em;
+}
+
+.__form-button{
+  display: flex;
+  background-color: var(--button-color);
+  color: #FFF;
+  padding: 1% 1%;
+  font-weight: var(--font-medium);
+  transition: .3s;
+  flex-direction: row;
+  justify-content: center;
 }
 
 /*=============== HOME ===============*/
