@@ -47,13 +47,25 @@ session_start();
                 </li>
                 <li class="nav__item">
                     <a href="new.php" class="nav__link">Nouvelles montres</a>
+                    <?php
+                    if(isset($_SESSION['pseudo'])){
+                        $pseudo = $_SESSION['pseudo'];
+                        $pseudo = ucfirst(strtolower($pseudo));
+                        echo"
+                <li class='nav__item'>
+                    <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
-                <li class="nav__item">
-                    <a href="connexion.php" class="nav__link">Connexion</a>
+                <li class='nav__item'>
+                    <a href='compte.php' class='nav__link'>$pseudo</a>
+                </li>";
+                    }else {echo "
+                <li class='nav__item'>
+                    <a href='connexion.php' class='nav__link'>Connexion</a>
                 </li>
-                <li class="nav__item">
-                    <a href="inscription.php" class="nav__link">Inscription</a>
-                </li>
+                <li class='nav__item'>
+                    <a href='inscription.php' class='nav__link'>Inscription</a>
+                </li>";}
+                    ?>
             </ul>
 
             <div class="nav__close" id="nav-close">

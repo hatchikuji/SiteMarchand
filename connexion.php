@@ -15,10 +15,6 @@ if(isset($_POST['pseudo'],$_POST['password'])){
     if(mysqli_num_rows($user_connect) == 0) {
         echo "<script type='text/javascript'>alert('Pseudo ou mot de passe incorrect');</script>";
     }else {
-        while ($row = mysqli_fetch_row($user_connect)) {
-            $pseudo_c = $row['pseudo'];
-            $id_c = $row['id'];
-        }
         $_SESSION['pseudo'] = $pseudo;
         header("Location: index.php");
         exit();

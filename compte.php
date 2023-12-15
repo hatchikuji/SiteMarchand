@@ -39,7 +39,7 @@ session_start();
                     <a href="featured.php" class="nav__link">Populaire</a>
                 </li>
                 <li class="nav__item">
-                    <a href="story.php" class="nav__link active-link">Histoire</a>
+                    <a href="story.php" class="nav__link">Histoire</a>
                 </li>
                 <li class="nav__item">
                     <a href="product.php" class="nav__link">Produits</a>
@@ -55,7 +55,7 @@ session_start();
                     <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='compte.php' class='nav__link'>$pseudo</a>
+                    <a href='compte.php' class='nav__link  active-link'>$pseudo</a>
                 </li>";
                     }else {echo "
                 <li class='nav__item'>
@@ -86,30 +86,17 @@ session_start();
         </div>
     </nav>
 </header>
-<section class="story section container">
-    <div class="story__container grid">
-        <div class="story__data">
-            <h2 class="section__title story__section-title">
-                Notre histoire
-            </h2>
-
-            <h1 class="story__title">
-                Les inratables de <br> cette année
-            </h1>
-
-            <p class="story__description">
-                Les nouvelles et élégantes montres sorties cette année
-                vous sont présentées ici, découvrez les maintenant.
-            </p>
-
-            <a href="new.php" class="button button--small">Découvrez-les</a>
-        </div>
-
-        <div class="story__images">
-            <img src="assets/img/story.png" alt="" class="story__img">
-            <div class="story__square"></div>
-        </div>
-    </div>
+<section class="featured section container" id="featured">
+    ojzoeidjzedjoaijdojzedazedzedazedpzdpozkdpzokzpeodkzpeokdzpefijzoifdfjhazeofhazpoeifjzoeijfzef
+    zef
+    zefzefzpeifjzefojzeofizeofijzeofizjefoizejfoijoicjzoijpoeirapozekpzeokpozekfpozkefzeofze
+    fzefzef
+    zefzefzefz
+    efzefze
+    fze
+    fz
+    efzeffekfzpeofkzepfokzepfokzepfokzpeofkzpefokzpeofkzpeofkzpeofkzeopfkzef
+    zpoefkzpefokpzoefkp
 </section>
 <footer class="footer section">
     <div class="footer__container container grid">
@@ -193,3 +180,4 @@ session_start();
 <script src="assets/js/main.js"></script>
 </body>
 </html>
+

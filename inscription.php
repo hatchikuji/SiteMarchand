@@ -31,6 +31,7 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
         $inscrit = mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (pseudo, nom, prenom, mdp, date_naissance, adresse,code_postal, email, numero_tel) 
         VALUES ('$pseudo','$nom', '$prenom',md5('$password'),'$date','$adresse','$code_postal', '$mail', '$telephone')");
     }
+    header("connexion.php");
 }
 
 ?>

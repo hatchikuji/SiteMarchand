@@ -51,9 +51,14 @@ session_start();
                 </li>
                 <?php
                 if(isset($_SESSION['pseudo'])){
+                    $pseudo = $_SESSION['pseudo'];
+                    $pseudo = ucfirst(strtolower($pseudo));
                     echo"
                 <li class='nav__item'>
                     <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
+                </li>
+                <li class='nav__item'>
+                    <a href='compte.php' class='nav__link'>$pseudo</a>
                 </li>";
                 }else {echo "
                 <li class='nav__item'>
