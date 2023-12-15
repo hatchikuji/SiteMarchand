@@ -1,3 +1,9 @@
+<?php
+include('config.php');
+// Initialiser la session
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -32,16 +38,16 @@
           <a href="index.php" class="nav__link">Home</a>
         </li>
         <li class="nav__item">
-          <a href="featured.html" class="nav__link">Populaire</a>
+          <a href="featured.php" class="nav__link">Populaire</a>
         </li>
         <li class="nav__item">
-          <a href="story.html" class="nav__link">Histoire</a>
+          <a href="story.php" class="nav__link">Histoire</a>
         </li>
         <li class="nav__item">
-          <a href="product.html" class="nav__link">Produits</a>
+          <a href="product.php" class="nav__link">Produits</a>
         </li>
         <li class="nav__item">
-          <a href="new.html" class="nav__link active-link">Nouvelles montres</a>
+          <a href="new.php" class="nav__link active-link">Nouvelles montres</a>
         </li>
         <li class="nav__item">
           <a href="connexion.php" class="nav__link">Connexion</a>

@@ -1,21 +1,27 @@
 <?php
-include("config.php");
 session_start();
+include("config.php");
+
 
 $connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
 // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
 
 if(isset($_POST['pseudo'],$_POST['password'])){
-    $pseudo = stripslashes($_REQUEST['pseudo']);
-    $password = mysqli_real_escape_string($connect_site, stripslashes($_REQUEST['password']));
+    $pseudo = mysqli_real_escape_string($connect_site,stripslashes($_REQUEST['pseudo']));
+    $password = md5(mysqli_real_escape_string($connect_site, stripslashes($_REQUEST['password'])));
 
-    $user_connect = mysqli_query($connect_site,"SELECT * FROM utilisateurs WHERE pseudo='$pseudo' AND mdp='$password'");
+    $user_connect = mysqli_query($connect_site,"SELECT * FROM utilisateurs WHERE utilisateurs.pseudo='".$pseudo."' AND utilisateurs.mdp='".$password."'");
 
-    if (!$user_connect) {
-        $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
-    }else{
+    if(mysqli_num_rows($user_connect) == 0) {
+        echo "<script type='text/javascript'>alert('Pseudo ou mot de passe incorrect');</script>";
+    }else {
+        while ($row = mysqli_fetch_row($user_connect)) {
+            $pseudo_c = $row['pseudo'];
+            $id_c = $row['id'];
+        }
         $_SESSION['pseudo'] = $pseudo;
         header("Location: index.php");
+        exit();
     }
 }
 ?>
@@ -53,16 +59,16 @@ if(isset($_POST['pseudo'],$_POST['password'])){
                     <a href="index.php" class="nav__link active-link">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="featured.html" class="nav__link">Populaire</a>
+                    <a href="featured.php" class="nav__link">Populaire</a>
                 </li>
                 <li class="nav__item">
-                    <a href="story.html" class="nav__link">Histoire</a>
+                    <a href="story.php" class="nav__link">Histoire</a>
                 </li>
                 <li class="nav__item">
-                    <a href="product.html" class="nav__link">Produits</a>
+                    <a href="product.php" class="nav__link">Produits</a>
                 </li>
                 <li class="nav__item">
-                    <a href="new.html" class="nav__link">Nouvelles montres</a>
+                    <a href="new.php" class="nav__link">Nouvelles montres</a>
                 </li>
                 <li class="nav__item">
                     <a href="connexion.php" class="nav__link">Connexion</a>

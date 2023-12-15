@@ -1,3 +1,9 @@
+<?php
+include('config.php');
+// Initialiser la session
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -16,7 +22,7 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <title>Produits</title>
+    <title>Montres Marchandes</title>
 </head>
 <body>
 <header class="header" id="header">
@@ -31,16 +37,16 @@
                     <a href="index.php" class="nav__link">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="featured.html" class="nav__link">Populaire</a>
+                    <a href="featured.php" class="nav__link active-link">Populaire</a>
                 </li>
                 <li class="nav__item">
-                    <a href="story.html" class="nav__link">Histoire</a>
+                    <a href="story.php" class="nav__link">Histoire</a>
                 </li>
                 <li class="nav__item">
-                    <a href="product.html" class="nav__link active-link">Produits</a>
+                    <a href="product.php" class="nav__link">Produits</a>
                 </li>
                 <li class="nav__item">
-                    <a href="new.html" class="nav__link">Nouvelles montres</a>
+                    <a href="new.php" class="nav__link">Nouvelles montres</a>
                 </li>
                 <li class="nav__item">
                     <a href="connexion.php" class="nav__link">Connexion</a>
@@ -69,65 +75,49 @@
         </div>
     </nav>
 </header>
-<section class="products section container" id="products">
+<section class="featured section container" id="featured">
     <h2 class="section__title">
-        Produits
+        Les classiques
     </h2>
 
-    <div class="products__container grid">
-        <article class="products__card">
-            <img src="assets/img/product1.png" alt="" class="products__img">
+    <div class="featured__container grid">
+        <article class="featured__card">
+            <span class="featured__tag">Sale</span>
 
-            <h3 class="products__title">Spirit rose</h3>
-            <span class="products__price">$1500</span>
+            <img src="assets/img/featured1.png" alt="" class="featured__img">
 
-            <button class="products__button">
-                <i class='bx bx-shopping-bag'></i>
-            </button>
+            <div class="featured__data">
+                <h3 class="featured__title">Jazzmaster</h3>
+                <span class="featured__price">$1050</span>
+            </div>
+
+            <button class="button featured__button">ADD TO CART</button>
         </article>
 
-        <article class="products__card">
-            <img src="assets/img/product2.png" alt="" class="products__img">
+        <article class="featured__card">
+            <span class="featured__tag">Sale</span>
 
-            <h3 class="products__title">Khaki pilot</h3>
-            <span class="products__price">$1350</span>
+            <img src="assets/img/featured2.png" alt="" class="featured__img">
 
-            <button class="products__button">
-                <i class='bx bx-shopping-bag'></i>
-            </button>
+            <div class="featured__data">
+                <h3 class="featured__title">Ingersoll</h3>
+                <span class="featured__price">$250</span>
+            </div>
+
+            <button class="button featured__button">ADD TO CART</button>
         </article>
 
-        <article class="products__card">
-            <img src="assets/img/product3.png" alt="" class="products__img">
+        <article class="featured__card">
+            <span class="featured__tag">Sale</span>
 
-            <h3 class="products__title">Jubilee black</h3>
-            <span class="products__price">$870</span>
+            <img src="assets/img/featured3.png" alt="" class="featured__img">
 
-            <button class="products__button">
-                <i class='bx bx-shopping-bag'></i>
-            </button>
-        </article>
+            <div class="featured__data">
+                <h3 class="featured__title">Rose gold</h3>
+                <span class="featured__price">$890</span>
+            </div>
 
-        <article class="products__card">
-            <img src="assets/img/product4.png" alt="" class="products__img">
-
-            <h3 class="products__title">Fosil me3</h3>
-            <span class="products__price">$650</span>
-
-            <button class="products__button">
-                <i class='bx bx-shopping-bag'></i>
-            </button>
-        </article>
-
-        <article class="products__card">
-            <img src="assets/img/product5.png" alt="" class="products__img">
-
-            <h3 class="products__title">Duchen</h3>
-            <span class="products__price">$950</span>
-
-            <button class="products__button">
-                <i class='bx bx-shopping-bag'></i>
-            </button>
+            <button class="button featured__button">ADD TO CART</button>
         </article>
     </div>
 </section>
@@ -150,10 +140,10 @@
                     <a href="#" class="footer__link">Centre technique</a>
                 </li>
                 <li>
-                    <a href="#" class="footer__link">Service client</a>
+                    <a href="#" class="footer__link">Service Client</a>
                 </li>
                 <li>
-                    <a href="#" class="footer__link">A propos de nous</a>
+                    <a href="#" class="footer__link">A propos</a>
                 </li>
                 <li>
                     <a href="#" class="footer__link">Copyright</a>
@@ -162,7 +152,7 @@
         </div>
 
         <div class="footer__content">
-            <h3 class="footer__title">Produits</h3>
+            <h3 class="footer__title">Nouvelles montres</h3>
 
             <ul class="footer__links">
                 <li>

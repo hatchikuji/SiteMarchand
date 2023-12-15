@@ -8,7 +8,6 @@ const DB_NAME = '';
 const DB_SITE = 'site';
 const DB_SITEP = 'site_m';
 const DB_SITE_NOM = 'site_marchand_swann';
-session_start();
 $connect_root = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_NAME);
 
 // on crée la base de donnée 'site_marchand_swann' et l'utilisateur 'site'
@@ -42,5 +41,4 @@ mysqli_query($connect_site,"CREATE TABLE IF NOT EXISTS `site_marchand_swann`.`ut
 if($connect_site === false){
     die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
 }
-session_destroy();
 mysqli_close($connect_site);

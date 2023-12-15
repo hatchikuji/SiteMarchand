@@ -1,5 +1,6 @@
 <?php
 include("config.php");
+session_start();
 
 $connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
 // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
@@ -28,12 +29,10 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
         $telephone = stripslashes($_POST['numero_tel']);
         $telephone = mysqli_real_escape_string($connect_site, $telephone);
         $inscrit = mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (pseudo, nom, prenom, mdp, date_naissance, adresse,code_postal, email, numero_tel) 
-        VALUES ('$pseudo','$nom', '$prenom',sha1('$password'),'$date','$adresse','$code_postal', '$mail', '$telephone')");
-        if ($inscrit) {
-            header('index.php');
-        }
+        VALUES ('$pseudo','$nom', '$prenom',md5('$password'),'$date','$adresse','$code_postal', '$mail', '$telephone')");
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -69,16 +68,16 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
                     <a href="index.php" class="nav__link active-link">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="featured.html" class="nav__link">Populaire</a>
+                    <a href="featured.php" class="nav__link">Populaire</a>
                 </li>
                 <li class="nav__item">
-                    <a href="story.html" class="nav__link">Histoire</a>
+                    <a href="story.php" class="nav__link">Histoire</a>
                 </li>
                 <li class="nav__item">
-                    <a href="product.html" class="nav__link">Produits</a>
+                    <a href="product.php" class="nav__link">Produits</a>
                 </li>
                 <li class="nav__item">
-                    <a href="new.html" class="nav__link">Nouvelles montres</a>
+                    <a href="new.php" class="nav__link">Nouvelles montres</a>
                 </li>
                 <li class="nav__item">
                     <a href="connexion.php" class="nav__link">Connexion</a>
@@ -141,9 +140,10 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
                     </label>
                 </div>
                 <div class="__champ__button">
+
                     <input type="submit" value="S'inscrire" name="sinscrire" class="__form-button">
                     <br class="brrr">
-                    <a href="sample/register.php" class="__form-button">Se connecter</a>
+                    <a href="connexion.php" class="__form-button">Se connecter</a>
                 </div>
             </form>
         </div>
