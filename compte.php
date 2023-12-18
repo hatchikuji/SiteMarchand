@@ -2,7 +2,21 @@
 include('config.php');
 // Initialiser la session
 session_start();
+$connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
+$nom = mysqli_query($connect_site,"SELECT nom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$nom = mysqli_fetch_row($nom);
 
+$prenom = mysqli_query($connect_site,"SELECT prenom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$prenom = mysqli_fetch_row($prenom);
+
+$email = mysqli_query($connect_site,"SELECT email FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$email = mysqli_fetch_row($email);
+
+$numero_tel = mysqli_query($connect_site,"SELECT numero_tel FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$numero_tel = mysqli_fetch_row($numero_tel);
+
+$adresse = mysqli_query($connect_site,"SELECT adresse FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$adresse = mysqli_fetch_row($adresse);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -22,7 +36,7 @@ session_start();
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <title>Histoire</title>
+    <title>Compte</title>
 </head>
 <body>
 <header class="header" id="header">
@@ -86,17 +100,22 @@ session_start();
         </div>
     </nav>
 </header>
-<section class="featured section container" id="featured">
-    ojzoeidjzedjoaijdojzedazedzedazedpzdpozkdpzokzpeodkzpeokdzpefijzoifdfjhazeofhazpoeifjzoeijfzef
-    zef
-    zefzefzpeifjzefojzeofizeofijzeofizjefoizejfoijoicjzoijpoeirapozekpzeokpozekfpozkefzeofze
-    fzefzef
-    zefzefzefz
-    efzefze
-    fze
-    fz
-    efzeffekfzpeofkzepfokzepfokzepfokzpeofkzpefokzpeofkzpeofkzpeofkzeopfkzef
-    zpoefkzpefokpzoefkp
+<section class="section container" id="">
+    <div class="container">
+        <div class="story__images">
+            <img src="assets/img/featured1.png" width="400" height="613" alt="pic">
+        </div>
+        <div class="story__description">
+            <?php echo "
+            <h3>Nom: $nom[0]</h3>
+            <h3>Prénom: $prenom[0]</h3>
+            <h3>Nom d'utilisateur: $pseudo</h3>
+            <h3>Adresse mail: $email[0]</h3>
+            <h3>Numero de téléphone: $numero_tel[0]</h3>
+            <h3>Adresse: $adresse[0]</h3>"
+            ?>
+        </div>
+    </div>
 </section>
 <footer class="footer section">
     <div class="footer__container container grid">

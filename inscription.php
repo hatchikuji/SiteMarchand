@@ -53,7 +53,7 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="assets/css/styles.css">
 
-    <title>Montres Marchandes</title>
+    <title>Inscription</title>
 </head>
 <body>
 <!--==================== HEADER ====================-->
@@ -66,7 +66,7 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="index.php" class="nav__link active-link">Home</a>
+                    <a href="index.php" class="nav__link">Home</a>
                 </li>
                 <li class="nav__item">
                     <a href="featured.php" class="nav__link">Populaire</a>
@@ -84,7 +84,7 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
                     <a href="connexion.php" class="nav__link">Connexion</a>
                 </li>
                 <li class="nav__item">
-                    <a href="inscription.php" class="nav__link">Inscription</a>
+                    <a href="inscription.php" class="nav__link active-link">Inscription</a>
                 </li>
             </ul>
 
