@@ -105,7 +105,7 @@ if(isset($_POST['pseudo'],$_POST['password'])){
                 </div>
                 <div class="__champ__button">
                     <input type="submit" value="Connexion" name="connecter" class="__form-button">
-                    <br class="brrr">
+                    <br class="br">
                     <a href="inscription.php" class="__form-button">S'inscrire</a>
                 </div>
             </form>

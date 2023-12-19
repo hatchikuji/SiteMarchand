@@ -109,11 +109,11 @@ $adresse = mysqli_fetch_row($adresse);
             <?php echo "
             <h3>Nom: $nom[0]</h3>
             <h3>Prénom: $prenom[0]</h3>
-            <h3>Nom d'utilisateur: $pseudo</h3>
+            <h3>Nom d'utilisateur: "?><?php echo $_SESSION['pseudo']?><?php echo"</h3>
             <h3>Adresse mail: $email[0]</h3>
             <h3>Numero de téléphone: $numero_tel[0]</h3>
-            <h3>Adresse: $adresse[0]</h3>"
-            ?>
+            <h3>Adresse: $adresse[0]</h3>
+            "?>
         </div>
     </div>
 </section>

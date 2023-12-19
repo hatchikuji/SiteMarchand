@@ -143,7 +143,7 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
                 <div class="__champ__button">
 
                     <input type="submit" value="S'inscrire" name="sinscrire" class="__form-button">
-                    <br class="brrr">
+                    <br class="br">
                     <a href="connexion.php" class="__form-button">Se connecter</a>
                 </div>
             </form>
