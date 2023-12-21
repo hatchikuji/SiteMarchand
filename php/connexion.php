@@ -1,7 +1,6 @@
 <?php
-session_start();
 include("config.php");
-
+session_start();
 
 $connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
 // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
@@ -19,6 +18,10 @@ if(isset($_POST['pseudo'],$_POST['password'])){
         header("Location: ../index.php");
         exit();
     }
+}
+else{
+    session_destroy();
+    header("Location deconnexion.php");
 }
 ?>
 <!DOCTYPE html>

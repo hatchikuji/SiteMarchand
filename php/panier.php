@@ -1,14 +1,22 @@
 <?php
-include('config.php');
 session_start();
+// Récupération des données envoyées depuis la page JavaScript
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Ajouter'])) {
+    $idProduit =+ $_POST['idProduit'];
+    $prixProduit = $_POST['prixProduit'];
+
+}
+
+// Réponse à la requête JavaScript
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    echo caca
 
     <!--=============== FAVICON ===============-->
     <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">

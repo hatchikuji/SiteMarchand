@@ -95,28 +95,7 @@ const scrollUp = () =>{
 }
 window.addEventListener('scroll', scrollUp)
 
-/*=============== SHOW CART ===============*/
-const cart = document.getElementById('cart'),
-      cartShop = document.getElementById('cart-shop'),
-      cartClose = document.getElementById('cart-close')
-
-/*===== CART SHOW =====*/
-/* Validate if constant exists */
-if(cartShop){
-    cartShop.addEventListener('click', () =>{
-        cart.classList.add('show-cart')
-    })
-}
-
-/*===== CART HIDDEN =====*/
-/* Validate if constant exists */
-if(cartClose){
-    cartClose.addEventListener('click', () =>{
-        cart.classList.remove('show-cart')
-    })
-}
-
-/*=============== DARK LIGHT THEME ===============*/ 
+/*=============== DARK LIGHT THEME ===============*/
 const themeButton = document.getElementById('theme-button')
 const darkTheme = 'dark-theme'
 const iconTheme = 'bx-sun'
@@ -145,13 +124,4 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
-// Montrer le panier
-const panier_button = document.getElementById('panier_button')
-const panier_button_index = document.getElementById('panier_button_index')
-
-panier_button.onclick = function (){
-    location.href = 'panier.php'
-}
-panier_button_index.onclick = function (){
-    location.href = 'php/panier.php'
-}
+// Aller au panier

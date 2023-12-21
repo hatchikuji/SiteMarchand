@@ -70,10 +70,14 @@ $connect_site = mysqli_connect(DB_SERVER, DB_SITE,DB_SITEP,DB_SITE_NOM)
         <div class="nav__btns">
             <!-- Theme change button -->
             <i class='bx bx-moon change-theme' id="theme-button"></i>
-
-            <div class="nav__shop" id="cart-shop">
-                <i class='bx bx-shopping-bag' id="panier_button"></i>
-            </div>
+            <?php
+            if (isset($_SESSION['pseudo'])) {
+                echo "
+            <div class='nav__shop' id='cart-shop'>
+                <a class='a_panier' href='panier.php'><i class='bx bx-shopping-bag' id='panier_button_index'></i></a>
+            </div>";
+            }
+            ?>
 
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-grid-alt' ></i>
@@ -88,22 +92,24 @@ $connect_site = mysqli_connect(DB_SERVER, DB_SITE,DB_SITEP,DB_SITE_NOM)
 
     <div class="products__container grid">
         <?php
-        $chemin = 'chemin';
-        $nom = 'nom';
-        $prix = 'prix';
+        $chemin = "chemin";
+        $nom = "nom";
+        $prix = "prix";
+        $id = "id";
         $nb_produit = mysqli_fetch_assoc(mysqli_query($connect_site,"SELECT COUNT(*) AS NB FROM site_marchand_swann.produits"));
 
         $query_produits = mysqli_query($connect_site,"SELECT * FROM site_marchand_swann.produits");
          while($row = mysqli_fetch_assoc($query_produits)){
             echo "
         <article class='products__card'>
-            <form action='panier.php'>
-                <img src='$row[$chemin]' class='products__img' alt=''/img>
-            
-                <h3 class='products__title'>$row[$nom]</h3>
-                <span class='products__price'>Rs.$row[$prix]</span>
-                <button type='submit' class='products__button'>
-                    <i class='bx bx-shopping-bag'></i>
+            <form id='ajouter-panier' method='post' action='panier.php'>
+                <img src='{$row[$chemin]}' class='products__img' alt='/img'>
+                <h3 class='products__title'>{$row[$nom]}</h3>
+                <span class='products__price'>Rs.{$row[$prix]}</span>
+                <input type='hidden' name='idProduit' value='{$row[$id]}' >
+                <input type='hidden' name='prixProduit' value='{$row[$prix]}'>
+                <button type='submit' name='Ajouter' class='products__button' value='submit'>
+                <i class='bx bx-shopping-bag'></i>
                 </button>
             </form>
         </article>";

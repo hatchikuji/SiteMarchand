@@ -2,7 +2,6 @@
 include('php/config.php');
 // Initialiser la session
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -84,7 +83,6 @@ session_start();
                 <a class='a_panier' href='php/panier.php'><i class='bx bx-shopping-bag' id='panier_button_index'></i></a>
             </div>";
             }
-            else header('Location: connexion.php');
             ?>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -122,14 +120,6 @@ session_start();
                     avec un nouveau modèle.
                 </p>
                 <span class="home__price">$1245</span>
-
-                <div class="home__btns">
-                    <a href="#" class="button button--gray button--small">
-                        Découvrez
-                    </a>
-
-                    <button class="button home__button">AJOUTER AU PANIER</button>
-                </div>
             </div>
         </div>
     </section>

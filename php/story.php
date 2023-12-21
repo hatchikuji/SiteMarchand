@@ -71,9 +71,14 @@ session_start();
             <!-- Theme change button -->
             <i class='bx bx-moon change-theme' id="theme-button"></i>
 
-            <div class="nav__shop" id="cart-shop ">
-                <i class='bx bx-shopping-bag' id="panier_button"></i>
-            </div>
+            <?php
+            if (isset($_SESSION['pseudo'])) {
+                echo "
+            <div class='nav__shop' id='cart-shop'>
+                <a class='a_panier' href='panier.php'><i class='bx bx-shopping-bag' id='panier_button_index'></i></a>
+            </div>";
+            }
+            ?>
 
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-grid-alt' ></i>
