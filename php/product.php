@@ -2,7 +2,7 @@
 include('config.php');
 // Initialiser la session
 session_start();
-
+$connect_site = mysqli_connect(DB_SERVER, DB_SITE,DB_SITEP,DB_SITE_NOM)
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -88,17 +88,24 @@ session_start();
 
     <div class="products__container grid">
         <?php
+        $chemin = 'chemin';
+        $nom = 'nom';
+        $prix = 'prix';
+        $nb_produit = mysqli_fetch_assoc(mysqli_query($connect_site,"SELECT COUNT(*) AS NB FROM site_marchand_swann.produits"));
 
-        for ($i = 1; $i < 12; $i++){
-            echo "<article class='products__card'>
-            <img src='../assets/img/product$i.png' class='products__img' alt=''>
-
-            <h3 class='products__title'>$i</h3>
-            <span class='products__price'>$1500</span>
-
-            <button class='products__button'>
-                <i class='bx bx-shopping-bag'></i>
-            </button>
+        $query_produits = mysqli_query($connect_site,"SELECT * FROM site_marchand_swann.produits");
+         while($row = mysqli_fetch_assoc($query_produits)){
+            echo "
+        <article class='products__card'>
+            <form action='panier.php'>
+                <img src='$row[$chemin]' class='products__img' alt=''/img>
+            
+                <h3 class='products__title'>$row[$nom]</h3>
+                <span class='products__price'>Rs.$row[$prix]</span>
+                <button type='submit' class='products__button'>
+                    <i class='bx bx-shopping-bag'></i>
+                </button>
+            </form>
         </article>";
         }
         ?>

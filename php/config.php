@@ -41,6 +41,7 @@ mysqli_query($connect_site,"CREATE TABLE IF NOT EXISTS `site_marchand_swann`.`ut
 mysqli_query($connect_site,"CREATE TABLE IF NOT EXISTS `site_marchand_swann`.`produits`(
     `id` SERIAL NOT NULL,
     `chemin` TEXT NOT NULL,
+    `nom` TEXT NOT NULL,
     `prix` INT NOT NULL ) ENGINE = MyISAM;");
 
 if($connect_site === false){

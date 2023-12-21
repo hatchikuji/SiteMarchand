@@ -77,10 +77,15 @@ session_start();
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-grid-alt'></i>
             </div>
-
-            <div class="nav__shop" id="cart-shop">
-                <a class="a_panier"href="php/panier.php"><i class='bx bx-shopping-bag' id="panier_button_index"></i></a>
-            </div>
+            <?php
+            if (isset($_SESSION['pseudo'])) {
+                echo "
+            <div class='nav__shop' id='cart-shop'>
+                <a class='a_panier' href='php/panier.php'><i class='bx bx-shopping-bag' id='panier_button_index'></i></a>
+            </div>";
+            }
+            else header('Location: connexion.php');
+            ?>
 
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-grid-alt' ></i>

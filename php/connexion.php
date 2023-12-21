@@ -16,7 +16,7 @@ if(isset($_POST['pseudo'],$_POST['password'])){
         echo "<script type='text/javascript'>alert('Pseudo ou mot de passe incorrect');</script>";
     }else {
         $_SESSION['pseudo'] = $pseudo;
-        header("Location: index.php");
+        header("Location: ../index.php");
         exit();
     }
 }
