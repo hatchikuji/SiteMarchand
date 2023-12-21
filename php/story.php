@@ -2,21 +2,7 @@
 include('config.php');
 // Initialiser la session
 session_start();
-$connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
-$nom = mysqli_query($connect_site,"SELECT nom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
-$nom = mysqli_fetch_row($nom);
 
-$prenom = mysqli_query($connect_site,"SELECT prenom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
-$prenom = mysqli_fetch_row($prenom);
-
-$email = mysqli_query($connect_site,"SELECT email FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
-$email = mysqli_fetch_row($email);
-
-$numero_tel = mysqli_query($connect_site,"SELECT numero_tel FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
-$numero_tel = mysqli_fetch_row($numero_tel);
-
-$adresse = mysqli_query($connect_site,"SELECT adresse FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
-$adresse = mysqli_fetch_row($adresse);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,18 +11,18 @@ $adresse = mysqli_fetch_row($adresse);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
 
     <!--=============== BOXICONS ===============-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <!--=============== SWIPER CSS ===============-->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 
-    <title>Compte</title>
+    <title>Histoire</title>
 </head>
 <body>
 <header class="header" id="header">
@@ -47,29 +33,24 @@ $adresse = mysqli_fetch_row($adresse);
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="index.php" class="nav__link">Home</a>
+                    <a href="../index.php" class="nav__link">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="featured.php" class="nav__link">Populaire</a>
-                </li>
-                <li class="nav__item">
-                    <a href="story.php" class="nav__link">Histoire</a>
+                    <a href="story.php" class="nav__link active-link">Histoire</a>
                 </li>
                 <li class="nav__item">
                     <a href="product.php" class="nav__link">Produits</a>
                 </li>
-                <li class="nav__item">
-                    <a href="new.php" class="nav__link">Nouvelles montres</a>
                     <?php
                     if(isset($_SESSION['pseudo'])){
                         $pseudo = $_SESSION['pseudo'];
                         $pseudo = ucfirst(strtolower($pseudo));
-                        echo"
+                        echo "
                 <li class='nav__item'>
                     <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='compte.php' class='nav__link  active-link'>$pseudo</a>
+                    <a href='compte.php' class='nav__link'>$pseudo</a>
                 </li>";
                     }else {echo "
                 <li class='nav__item'>
@@ -90,8 +71,8 @@ $adresse = mysqli_fetch_row($adresse);
             <!-- Theme change button -->
             <i class='bx bx-moon change-theme' id="theme-button"></i>
 
-            <div class="nav__shop" id="cart-shop">
-                <i class='bx bx-shopping-bag' ></i>
+            <div class="nav__shop" id="cart-shop ">
+                <i class='bx bx-shopping-bag' id="panier_button"></i>
             </div>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -100,20 +81,26 @@ $adresse = mysqli_fetch_row($adresse);
         </div>
     </nav>
 </header>
-<section class="section container" id="">
-    <div class="container">
-        <div class="story__images">
-            <img src="assets/img/featured1.png" width="400" height="613" alt="pic">
+<section class="story section container">
+    <div class="story__container grid">
+        <div class="story__data">
+            <h2 class="section__title story__section-title">
+                Notre histoire
+            </h2>
+
+            <h1 class="story__title">
+                Les inratables de <br> cette année
+            </h1>
+
+            <p class="story__description">
+                Les nouvelles et élégantes montres sorties cette année
+                vous sont présentées ici, découvrez les maintenant.
+            </p>
         </div>
-        <div class="story__description">
-            <?php echo "
-            <h3>Nom: $nom[0]</h3>
-            <h3>Prénom: $prenom[0]</h3>
-            <h3>Nom d'utilisateur: "?><?php echo $_SESSION['pseudo']?><?php echo"</h3>
-            <h3>Adresse mail: $email[0]</h3>
-            <h3>Numero de téléphone: $numero_tel[0]</h3>
-            <h3>Adresse: $adresse[0]</h3>
-            "?>
+
+        <div class="story__images">
+            <img src="../assets/img/story.png" alt="" class="story__img">
+            <div class="story__square"></div>
         </div>
     </div>
 </section>
@@ -193,10 +180,9 @@ $adresse = mysqli_fetch_row($adresse);
 </a>
 
 <!--=============== SWIPER JS ===============-->
-<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="../assets/js/swiper-bundle.min.js"></script>
 
 <!--=============== MAIN JS ===============-->
-<script src="assets/js/main.js"></script>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
-

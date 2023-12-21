@@ -2,7 +2,21 @@
 include('config.php');
 // Initialiser la session
 session_start();
+$connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
+$nom = mysqli_query($connect_site,"SELECT nom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$nom = mysqli_fetch_row($nom);
 
+$prenom = mysqli_query($connect_site,"SELECT prenom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$prenom = mysqli_fetch_row($prenom);
+
+$email = mysqli_query($connect_site,"SELECT email FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$email = mysqli_fetch_row($email);
+
+$numero_tel = mysqli_query($connect_site,"SELECT numero_tel FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$numero_tel = mysqli_fetch_row($numero_tel);
+
+$adresse = mysqli_query($connect_site,"SELECT adresse FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$adresse = mysqli_fetch_row($adresse);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -11,18 +25,18 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
 
     <!--=============== BOXICONS ===============-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <!--=============== SWIPER CSS ===============-->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 
-    <title>Montres Marchandes</title>
+    <title>Compte</title>
 </head>
 <body>
 <header class="header" id="header">
@@ -30,14 +44,10 @@ session_start();
         <a href="#" class="nav__logo">
             <i class='bx bxs-watch nav__logo-icon'></i> Montres
         </a>
-
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="index.php" class="nav__link">Home</a>
-                </li>
-                <li class="nav__item">
-                    <a href="featured.php" class="nav__link active-link">Populaire</a>
+                    <a href="../index.php" class="nav__link">Home</a>
                 </li>
                 <li class="nav__item">
                     <a href="story.php" class="nav__link">Histoire</a>
@@ -45,18 +55,16 @@ session_start();
                 <li class="nav__item">
                     <a href="product.php" class="nav__link">Produits</a>
                 </li>
-                <li class="nav__item">
-                    <a href="new.php" class="nav__link">Nouvelles montres</a>
                     <?php
                     if(isset($_SESSION['pseudo'])){
                         $pseudo = $_SESSION['pseudo'];
                         $pseudo = ucfirst(strtolower($pseudo));
-                        echo"
+                        echo "
                 <li class='nav__item'>
                     <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='compte.php' class='nav__link'>$pseudo</a>
+                    <a href='compte.php' class='nav__link  active-link'>$pseudo</a>
                 </li>";
                     }else {echo "
                 <li class='nav__item'>
@@ -78,7 +86,7 @@ session_start();
             <i class='bx bx-moon change-theme' id="theme-button"></i>
 
             <div class="nav__shop" id="cart-shop">
-                <i class='bx bx-shopping-bag' ></i>
+                <i class='bx bx-shopping-bag' id="panier_button"></i>
             </div>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -87,50 +95,21 @@ session_start();
         </div>
     </nav>
 </header>
-<section class="featured section container" id="featured">
-    <h2 class="section__title">
-        Les classiques
-    </h2>
-
-    <div class="featured__container grid">
-        <article class="featured__card">
-            <span class="featured__tag">Sale</span>
-
-            <img src="assets/img/featured1.png" alt="" class="featured__img">
-
-            <div class="featured__data">
-                <h3 class="featured__title">Jazzmaster</h3>
-                <span class="featured__price">$1050</span>
-            </div>
-
-            <button class="button featured__button">ADD TO CART</button>
-        </article>
-
-        <article class="featured__card">
-            <span class="featured__tag">Sale</span>
-
-            <img src="assets/img/featured2.png" alt="" class="featured__img">
-
-            <div class="featured__data">
-                <h3 class="featured__title">Ingersoll</h3>
-                <span class="featured__price">$250</span>
-            </div>
-
-            <button class="button featured__button">ADD TO CART</button>
-        </article>
-
-        <article class="featured__card">
-            <span class="featured__tag">Sale</span>
-
-            <img src="assets/img/featured3.png" alt="" class="featured__img">
-
-            <div class="featured__data">
-                <h3 class="featured__title">Rose gold</h3>
-                <span class="featured__price">$890</span>
-            </div>
-
-            <button class="button featured__button">ADD TO CART</button>
-        </article>
+<section class="section container" id="">
+    <div class="container">
+        <div class="story__images">
+            <img src="../assets/img/product12.png" width="400" height="613" alt="pic">
+        </div>
+        <div class="story__description">
+            <?php echo "
+            <h3>Nom: $nom[0]</h3>
+            <h3>Prénom: $prenom[0]</h3>
+            <h3>Nom d'utilisateur: "?><?php echo $_SESSION['pseudo']?><?php echo"</h3>
+            <h3>Adresse mail: $email[0]</h3>
+            <h3>Numero de téléphone: $numero_tel[0]</h3>
+            <h3>Adresse: $adresse[0]</h3>
+            "?>
+        </div>
     </div>
 </section>
 <footer class="footer section">
@@ -152,7 +131,7 @@ session_start();
                     <a href="#" class="footer__link">Centre technique</a>
                 </li>
                 <li>
-                    <a href="#" class="footer__link">Service Client</a>
+                    <a href="#" class="footer__link">Service client</a>
                 </li>
                 <li>
                     <a href="#" class="footer__link">A propos</a>
@@ -164,7 +143,7 @@ session_start();
         </div>
 
         <div class="footer__content">
-            <h3 class="footer__title">Nouvelles montres</h3>
+            <h3 class="footer__title">Histoire</h3>
 
             <ul class="footer__links">
                 <li>
@@ -200,7 +179,6 @@ session_start();
             </ul>
         </div>
     </div>
-
     <span class="footer__copy">&#169; Brillant. All rigths reserved</span>
 </footer>
 
@@ -210,9 +188,10 @@ session_start();
 </a>
 
 <!--=============== SWIPER JS ===============-->
-<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="../assets/js/swiper-bundle.min.js"></script>
 
 <!--=============== MAIN JS ===============-->
-<script src="assets/js/main.js"></script>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
+

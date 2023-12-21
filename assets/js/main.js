@@ -145,3 +145,13 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+// Montrer le panier
+const panier_button = document.getElementById('panier_button')
+const panier_button_index = document.getElementById('panier_button_index')
+
+panier_button.onclick = function (){
+    location.href = 'panier.php'
+}
+panier_button_index.onclick = function (){
+    location.href = 'php/panier.php'
+}

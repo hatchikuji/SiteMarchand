@@ -42,16 +42,16 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
     <meta nom="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
 
     <!--=============== BOXICONS ===============-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <!--=============== SWIPER CSS ===============-->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 
     <title>Inscription</title>
 </head>
@@ -66,19 +66,13 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="index.php" class="nav__link">Home</a>
-                </li>
-                <li class="nav__item">
-                    <a href="featured.php" class="nav__link">Populaire</a>
+                    <a href="../index.php" class="nav__link">Home</a>
                 </li>
                 <li class="nav__item">
                     <a href="story.php" class="nav__link">Histoire</a>
                 </li>
                 <li class="nav__item">
                     <a href="product.php" class="nav__link">Produits</a>
-                </li>
-                <li class="nav__item">
-                    <a href="new.php" class="nav__link">Nouvelles montres</a>
                 </li>
                 <li class="nav__item">
                     <a href="connexion.php" class="nav__link">Connexion</a>
@@ -227,8 +221,8 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
     </a>
 
     <!--=============== SWIPER JS ===============-->
-    <script src="assets/js/swiper-bundle.min.js"></script>
+    <script src="../assets/js/swiper-bundle.min.js"></script>
 
     <!--=============== MAIN JS ===============-->
-    <script src="assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 </body>

@@ -11,18 +11,18 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FAVICON ===============-->
-    <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
 
     <!--=============== BOXICONS ===============-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
     <!--=============== SWIPER CSS ===============-->
-    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../assets/css/swiper-bundle.min.css">
 
     <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
 
-    <title>Histoire</title>
+    <title>Produits</title>
 </head>
 <body>
 <header class="header" id="header">
@@ -30,27 +30,23 @@ session_start();
         <a href="#" class="nav__logo">
             <i class='bx bxs-watch nav__logo-icon'></i> Montres
         </a>
+
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item">
-                    <a href="index.php" class="nav__link">Home</a>
+                    <a href="../index.php" class="nav__link">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="featured.php" class="nav__link">Populaire</a>
+                    <a href="story.php" class="nav__link">Histoire</a>
                 </li>
                 <li class="nav__item">
-                    <a href="story.php" class="nav__link active-link">Histoire</a>
+                    <a href="product.php" class="nav__link active-link">Produits</a>
                 </li>
-                <li class="nav__item">
-                    <a href="product.php" class="nav__link">Produits</a>
-                </li>
-                <li class="nav__item">
-                    <a href="new.php" class="nav__link">Nouvelles montres</a>
                     <?php
                     if(isset($_SESSION['pseudo'])){
                         $pseudo = $_SESSION['pseudo'];
                         $pseudo = ucfirst(strtolower($pseudo));
-                        echo"
+                        echo "
                 <li class='nav__item'>
                     <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
@@ -66,7 +62,6 @@ session_start();
                 </li>";}
                     ?>
             </ul>
-
             <div class="nav__close" id="nav-close">
                 <i class='bx bx-x' ></i>
             </div>
@@ -77,7 +72,7 @@ session_start();
             <i class='bx bx-moon change-theme' id="theme-button"></i>
 
             <div class="nav__shop" id="cart-shop">
-                <i class='bx bx-shopping-bag' ></i>
+                <i class='bx bx-shopping-bag' id="panier_button"></i>
             </div>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -86,29 +81,27 @@ session_start();
         </div>
     </nav>
 </header>
-<section class="story section container">
-    <div class="story__container grid">
-        <div class="story__data">
-            <h2 class="section__title story__section-title">
-                Notre histoire
-            </h2>
+<section class="products section container" id="products">
+    <h2 class="section__title">
+        Produits
+    </h2>
 
-            <h1 class="story__title">
-                Les inratables de <br> cette année
-            </h1>
+    <div class="products__container grid">
+        <?php
 
-            <p class="story__description">
-                Les nouvelles et élégantes montres sorties cette année
-                vous sont présentées ici, découvrez les maintenant.
-            </p>
+        for ($i = 1; $i < 12; $i++){
+            echo "<article class='products__card'>
+            <img src='../assets/img/product$i.png' class='products__img' alt=''>
 
-            <a href="new.php" class="button button--small">Découvrez-les</a>
-        </div>
+            <h3 class='products__title'>$i</h3>
+            <span class='products__price'>$1500</span>
 
-        <div class="story__images">
-            <img src="assets/img/story.png" alt="" class="story__img">
-            <div class="story__square"></div>
-        </div>
+            <button class='products__button'>
+                <i class='bx bx-shopping-bag'></i>
+            </button>
+        </article>";
+        }
+        ?>
     </div>
 </section>
 <footer class="footer section">
@@ -133,7 +126,7 @@ session_start();
                     <a href="#" class="footer__link">Service client</a>
                 </li>
                 <li>
-                    <a href="#" class="footer__link">A propos</a>
+                    <a href="#" class="footer__link">A propos de nous</a>
                 </li>
                 <li>
                     <a href="#" class="footer__link">Copyright</a>
@@ -142,7 +135,7 @@ session_start();
         </div>
 
         <div class="footer__content">
-            <h3 class="footer__title">Histoire</h3>
+            <h3 class="footer__title">Produits</h3>
 
             <ul class="footer__links">
                 <li>
@@ -178,6 +171,7 @@ session_start();
             </ul>
         </div>
     </div>
+
     <span class="footer__copy">&#169; Brillant. All rigths reserved</span>
 </footer>
 
@@ -187,9 +181,9 @@ session_start();
 </a>
 
 <!--=============== SWIPER JS ===============-->
-<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="../assets/js/swiper-bundle.min.js"></script>
 
 <!--=============== MAIN JS ===============-->
-<script src="assets/js/main.js"></script>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>

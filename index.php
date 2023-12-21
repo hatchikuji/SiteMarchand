@@ -1,5 +1,5 @@
 <?php
-include('config.php');
+include('php/config.php');
 // Initialiser la session
 session_start();
 
@@ -38,153 +38,57 @@ session_start();
                     <a href="index.php" class="nav__link active-link">Home</a>
                 </li>
                 <li class="nav__item">
-                    <a href="featured.php" class="nav__link">Populaire</a>
+                    <a href="php/story.php" class="nav__link">Histoire</a>
                 </li>
                 <li class="nav__item">
-                    <a href="story.php" class="nav__link">Histoire</a>
-                </li>
-                <li class="nav__item">
-                    <a href="product.php" class="nav__link">Produits</a>
-                </li>
-                <li class="nav__item">
-                    <a href="new.php" class="nav__link">Nouvelles montres</a>
+                    <a href="php/product.php" class="nav__link">Produits</a>
                 </li>
                 <?php
-                if(isset($_SESSION['pseudo'])){
+                if (isset($_SESSION['pseudo'])) {
                     $pseudo = $_SESSION['pseudo'];
                     $pseudo = ucfirst(strtolower($pseudo));
-                    echo"
+                    echo "
                 <li class='nav__item'>
-                    <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
+                    <a href='php/deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='compte.php' class='nav__link'>$pseudo</a>
+                    <a href='php/compte.php' class='nav__link'>$pseudo</a>
                 </li>";
-                }else {echo "
+                } else {
+                    echo "
                 <li class='nav__item'>
-                    <a href='connexion.php' class='nav__link'>Connexion</a>
+                    <a href='php/connexion.php' class='nav__link'>Connexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='inscription.php' class='nav__link'>Inscription</a>
-                </li>";}
+                    <a href='php/inscription.php' class='nav__link'>Inscription</a>
+                </li>";
+                }
                 ?>
             </ul>
 
             <div class="nav__close" id="nav-close">
-                <i class='bx bx-x' ></i>
+                <i class='bx bx-x'></i>
             </div>
         </div>
 
         <div class="nav__btns">
             <!-- Bouton de changement de theme -->
             <i class='bx bx-moon change-theme' id="theme-button"></i>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-grid-alt'></i>
+            </div>
 
             <div class="nav__shop" id="cart-shop">
-                <i class='bx bx-shopping-bag' ></i>
+                <a class="a_panier"href="php/panier.php"><i class='bx bx-shopping-bag' id="panier_button_index"></i></a>
             </div>
 
             <div class="nav__toggle" id="nav-toggle">
                 <i class='bx bx-grid-alt' ></i>
             </div>
+
         </div>
     </nav>
 </header>
-
-<!--==================== CART ====================-->
-<div class="cart" id="cart">
-    <i class='bx bx-x cart__close' id="cart-close"></i>
-
-    <h2 class="cart__title-center">Mon panier</h2>
-
-    <div class="cart__container">
-        <article class="cart__card">
-            <div class="cart__box">
-                <img src="assets/img/featured1.png" alt="" class="cart__img">
-            </div>
-
-            <div class="cart__details">
-                <h3 class="cart__title">Jazzmaster</h3>
-                <span class="cart__price">$1050</span>
-
-                <div class="cart__amount">
-                    <div class="cart__amount-content">
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-minus' ></i>
-                                </span>
-
-                        <span class="cart__amount-number">1</span>
-
-                        <span class="cart__amount-box">
-                                    <i class='bx bx-plus' ></i>
-                                </span>
-                    </div>
-
-                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
-                </div>
-            </div>
-        </article>
-
-        <article class="cart__card">
-            <div class="cart__box">
-                <img src="assets/img/featured3.png" alt="" class="cart__img">
-            </div>
-
-            <div class="cart__details">
-                <h3 class="cart__title">Rose Gold</h3>
-                <span class="cart__price">$850</span>
-
-                <div class="cart__amount">
-                    <div class="cart__amount-content">
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-minus' ></i>
-                                </span>
-
-                        <span class="cart__amount-number">1</span>
-
-                        <span class="cart__amount-box">
-                                    <i class='bx bx-plus' ></i>
-                                </span>
-                    </div>
-
-                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
-                </div>
-            </div>
-        </article>
-
-        <article class="cart__card">
-            <div class="cart__box">
-                <img src="assets/img/new1.png" alt="" class="cart__img">
-            </div>
-
-            <div class="cart__details">
-                <h3 class="cart__title">Longines Rose</h3>
-                <span class="cart__price">$980</span>
-
-                <div class="cart__amount">
-                    <div class="cart__amount-content">
-                                <span class="cart__amount-box">
-                                    <i class='bx bx-minus' ></i>
-                                </span>
-
-                        <span class="cart__amount-number">1</span>
-
-                        <span class="cart__amount-box">
-                                    <i class='bx bx-plus' ></i>
-                                </span>
-                    </div>
-
-                    <i class='bx bx-trash-alt cart__amount-trash' ></i>
-                </div>
-            </div>
-        </article>
-    </div>
-
-    <div class="cart__prices">
-        <span class="cart__prices-item">3 items</span>
-        <span class="cart__prices-total">$2880</span>
-    </div>
-</div>
-
 <!--==================== MAIN ====================-->
 <main class="main">
     <!--==================== HOME ====================-->
@@ -216,7 +120,7 @@ session_start();
 
                 <div class="home__btns">
                     <a href="#" class="button button--gray button--small">
-                        Découvez
+                        Découvrez
                     </a>
 
                     <button class="button home__button">AJOUTER AU PANIER</button>
@@ -231,7 +135,7 @@ session_start();
                 <div class="swiper-wrapper">
                     <div class="testimonial__card swiper-slide">
                         <div class="testimonial__quote">
-                            <i class='bx bxs-quote-alt-left' ></i>
+                            <i class='bx bxs-quote-alt-left'></i>
                         </div>
                         <p class="testimonial__description">
                             Elles sont les meilleures montres que l'on puisse avoir, la dernière collections est
@@ -252,7 +156,7 @@ session_start();
 
                     <div class="testimonial__card swiper-slide">
                         <div class="testimonial__quote">
-                            <i class='bx bxs-quote-alt-left' ></i>
+                            <i class='bx bxs-quote-alt-left'></i>
                         </div>
                         <p class="testimonial__description">
                             Montres exceptionnelles qui peuvent vous accompagner autant dans la vie de tout les
@@ -273,7 +177,7 @@ session_start();
 
                     <div class="testimonial__card swiper-slide">
                         <div class="testimonial__quote">
-                            <i class='bx bxs-quote-alt-left' ></i>
+                            <i class='bx bxs-quote-alt-left'></i>
                         </div>
                         <p class="testimonial__description">
                             Elles sont tout aussi solides qu'élégantes, que vous pratiquez des sport extrêmes ou
@@ -294,10 +198,10 @@ session_start();
                 </div>
 
                 <div class="swiper-button-next">
-                    <i class='bx bx-right-arrow-alt' ></i>
+                    <i class='bx bx-right-arrow-alt'></i>
                 </div>
                 <div class="swiper-button-prev">
-                    <i class='bx bx-left-arrow-alt' ></i>
+                    <i class='bx bx-left-arrow-alt'></i>
                 </div>
             </div>
 
@@ -307,7 +211,6 @@ session_start();
             </div>
         </div>
     </section>
-
 
 
     <!--==================== NEWSLETTER ====================-->
@@ -391,11 +294,11 @@ session_start();
                 </a>
 
                 <a href="https://twitter.com/" target="_blank" class="footer__social-link">
-                    <i class='bx bxl-twitter' ></i>
+                    <i class='bx bxl-twitter'></i>
                 </a>
 
                 <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
-                    <i class='bx bxl-instagram' ></i>
+                    <i class='bx bxl-instagram'></i>
                 </a>
             </ul>
         </div>
@@ -406,7 +309,7 @@ session_start();
 
 <!--=============== SCROLL UP ===============-->
 <a href="#" class="scrollup" id="scroll-up">
-    <i class='bx bx-up-arrow-alt scrollup__icon' ></i>
+    <i class='bx bx-up-arrow-alt scrollup__icon'></i>
 </a>
 
 <!--=============== SWIPER JS ===============-->
