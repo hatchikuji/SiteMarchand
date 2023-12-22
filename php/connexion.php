@@ -5,16 +5,18 @@ session_start();
 $connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
 // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
 
-if(isset($_POST['pseudo'],$_POST['password'])){
-    $pseudo = mysqli_real_escape_string($connect_site,stripslashes($_REQUEST['pseudo']));
+if(isset($_POST['utilisateur'],$_POST['password'])){
+    $utilisateur = mysqli_real_escape_string($connect_site,stripslashes($_REQUEST['utilisateur']));
     $password = md5(mysqli_real_escape_string($connect_site, stripslashes($_REQUEST['password'])));
 
-    $user_connect = mysqli_query($connect_site,"SELECT * FROM utilisateurs WHERE utilisateurs.pseudo='".$pseudo."' AND utilisateurs.mdp='".$password."'");
+    $user_connect = mysqli_query($connect_site,"SELECT * FROM utilisateurs WHERE utilisateurs.pseudo='".$utilisateur."' AND utilisateurs.mdp='".$password."'");
 
     if(mysqli_num_rows($user_connect) == 0) {
         echo "<script type='text/javascript'>alert('Pseudo ou mot de passe incorrect');</script>";
     }else {
-        $_SESSION['pseudo'] = $pseudo;
+        $_SESSION['utilisateur'] = array(
+            'nom' => $utilisateur,
+            'panier' => array());
         header("Location: ../index.php");
         exit();
     }
@@ -96,7 +98,7 @@ else{
             <form class="formulaire_box grid" action="" method="post">
                 <div class="__champ">
                     <label>
-                        <input type="text" class="box-input" name="pseudo" placeholder="Pseudo" required>
+                        <input type="text" class="box-input" name="utilisateur" placeholder="Nom d'utilisateur" required>
                         <input type="password" class="box-input" name="password" placeholder="Mot de passe" required>
                     </label>
                 </div>

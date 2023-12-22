@@ -1,15 +1,57 @@
 <?php
+// Assurez-vous que la session est démarrée
+include('config.php');
 session_start();
-// Récupération des données envoyées depuis la page JavaScript
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Ajouter'])) {
-    $idProduit =+ $_POST['idProduit'];
-    $prixProduit = $_POST['prixProduit'];
+$connect_site = mysqli_connect(DB_SERVER, DB_SITE,DB_SITEP,DB_SITE_NOM);
 
+// Vérifiez si une action spécifique a été demandée
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['Ajouter'])) {
+        // Récupérez les données du formulaire
+        $idProduit = $_POST['idProduit'];
+        $prixProduit = $_POST['prixProduit'];
+
+        // Vérifiez si le produit est déjà dans le panier
+        $produitExiste = false;
+        foreach ($_SESSION['utilisateur']['panier'] as &$produit) {
+            if ($produit['idProduit'] == $idProduit) {
+                $produit['quantite'] += 1; // Augmentez la quantité si le produit existe déjà
+                $produitExiste = true;
+                break;
+            }
+        }
+
+        // Si le produit n'existe pas, ajoutez-le au panier
+        if (!$produitExiste) {
+            $_SESSION['utilisateur']['panier'][] = array('idProduit' => $idProduit, 'prixProduit' => $prixProduit, 'quantite' => 1);
+        }
+
+    } elseif (isset($_POST['Supprimer'])) {
+        // Supprimez le produit du panier
+        $idProduit = $_POST['idProduit'];
+        foreach ($_SESSION['utilisateur']['panier'] as $index => $produit) {
+            if ($produit['idProduit'] == $idProduit) {
+                unset($_SESSION['utilisateur']['panier'][$index]);
+                break;
+            }
+        }
+    } elseif (isset($_POST['MettreAJourQuantite'])) {
+        // Mettez à jour la quantité du produit dans le panier
+        $idProduit = $_POST['idProduit'];
+        $nouvelleQuantite = $_POST['nouvelleQuantite'];
+        foreach ($_SESSION['utilisateur']['panier'] as &$produit) {
+            if ($produit['idProduit'] == $idProduit) {
+                $produit['quantite'] = $nouvelleQuantite;
+                break;
+            }
+        }
+    }
 }
 
-// Réponse à la requête JavaScript
-
 ?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -52,15 +94,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Ajouter'])) {
                     <a href="product.php" class="nav__link">Produits</a>
                 </li>
                 <?php
-                if (isset($_SESSION['pseudo'])) {
-                    $pseudo = $_SESSION['pseudo'];
-                    $pseudo = ucfirst(strtolower($pseudo));
+                if (isset($_SESSION['utilisateur'])) {
+                    $utilisateur = $_SESSION['utilisateur']['nom'];
+                    $utilisateur = ucfirst(strtolower($utilisateur));
                     echo "
                 <li class='nav__item'>
-                    <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
+                    <a href='php/deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='compte.php' class='nav__link'>$pseudo</a>
+                    <a href='php/compte.php' class='nav__link'>$utilisateur</a>
                 </li>";
                 } else {
                     echo "
@@ -96,3 +138,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['Ajouter'])) {
         </div>
     </nav>
 </header>
+<section class="product section container" id="product">
+    <h2 class="section__title">Panier</h2>
+
+    <div class="products__container grid">
+        <?php
+        if (isset($_SESSION['utilisateur']['panier']) && !empty($_SESSION['utilisateur']['panier'])) {
+            $prixTotal = 0;
+
+            foreach ($_SESSION['utilisateur']['panier'] as $produit) {
+                $idProduit = $produit['idProduit'];
+                $prixProduit = $produit['prixProduit'];
+                $quantite = $produit['quantite'];
+
+                // Calculez le sous-total pour chaque produit
+                $sousTotal = $prixProduit * $quantite;
+
+                // Ajoutez le sous-total au prix total
+                $prixTotal += $sousTotal;
+
+                // Affichez les détails du produit dans le panier
+                $chemin = "chemin";
+                $nb_produit = mysqli_fetch_assoc(mysqli_query($connect_site,"SELECT COUNT(*) AS NB FROM site_marchand_swann.produits"));
+
+                $query_produits = mysqli_query($connect_site,"SELECT * FROM site_marchand_swann.produits WHERE produits.id=$idProduit");
+                while($row = mysqli_fetch_assoc($query_produits)) {
+                    echo "
+                    <article class='products__card'>
+                        <form method='post' action='panier.php'>
+                        <img src='{$row[$chemin]}' class='products__img' alt='/img'>
+                        <p>Produit ID: $idProduit, Prix: $prixProduit, Quantité: <input type='number' name='nouvelleQuantite' placeholder='$quantite' min='1'>
+                        <button type='submit' name='MettreAJourQuantite'>Mettre à jour</button>
+                        <button type='submit' name='Supprimer'>Supprimer</button></p>
+                        <input type='hidden' name='idProduit' value='$idProduit'>
+                        </form>
+                    </article>";
+                }
+            }
+            echo "<p>Prix total: $prixTotal</p>";
+        }
+        else {
+            echo "<p>Le panier est vide.</p>";
+        }
+
+        ?>
+    </div>
+</section>

@@ -44,9 +44,6 @@ mysqli_query($connect_site,"CREATE TABLE IF NOT EXISTS `site_marchand_swann`.`pr
     `nom` TEXT NOT NULL,
     `prix` INT NOT NULL ) ENGINE = MyISAM;");
 
-mysqli_query($connect_site,"CREATE TABLE IF NOT EXISTS `site_marchand_swann`.`panier`(
-    `nb` INT) ENGINE = MyISAM;");
-
 if($connect_site === false){
     die("ERREUR : Impossible de se connecter. " . mysqli_connect_error());
 }

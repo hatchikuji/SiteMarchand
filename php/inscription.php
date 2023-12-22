@@ -5,10 +5,10 @@ session_start();
 $connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
 // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
 
-if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $_POST['date_naissance'],$_POST['adresse'],$_POST['code_postal'],$_POST['email'],$_POST['numero_tel'])) {
-    $pseudo = mysqli_real_escape_string($connect_site, stripcslashes($_POST['pseudo']));
+if(isset($_POST['utilisateur'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $_POST['date_naissance'],$_POST['adresse'],$_POST['code_postal'],$_POST['email'],$_POST['numero_tel'])) {
+    $utilisateur = mysqli_real_escape_string($connect_site, stripcslashes($_POST['utilisateur']));
 
-    if (mysqli_num_rows(mysqli_query($connect_site,"SELECT * FROM utilisateurs WHERE pseudo='".$_POST['pseudo']."'"))==1){//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
+    if (mysqli_num_rows(mysqli_query($connect_site,"SELECT * FROM utilisateurs WHERE pseudo='".$_POST['utilisateur']."'"))==1){//on vérifie que ce pseudo n'est pas déjà utilisé par un autre membre
         echo '<script type="text/javascript">alert("Pseudo déjà utilisé")</script>';
     }else {
         //on utilise la méthode mysqli_real_escape_string pour pouvoir executer les requêtes SQL sur les variables
@@ -29,7 +29,7 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
         $telephone = stripslashes($_POST['numero_tel']);
         $telephone = mysqli_real_escape_string($connect_site, $telephone);
         $inscrit = mysqli_query($connect_site, "INSERT INTO site_marchand_swann.utilisateurs (pseudo, nom, prenom, mdp, date_naissance, adresse,code_postal, email, numero_tel) 
-        VALUES ('$pseudo','$nom', '$prenom',md5('$password'),'$date','$adresse','$code_postal', '$mail', '$telephone')");
+        VALUES ('$utilisateur','$nom', '$prenom',md5('$password'),'$date','$adresse','$code_postal', '$mail', '$telephone')");
     }
     header("connexion.php");
 }
@@ -39,7 +39,7 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta nom="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!--=============== FAVICON ===============-->
     <link rel="shortcut icon" href="../assets/img/favicon.png" type="image/x-icon">
@@ -107,7 +107,7 @@ if(isset($_POST['pseudo'],$_POST['prenom'], $_POST['nom'], $_POST['password'], $
             <form class="formulaire_box grid" action="" method="post">
                 <div class="__champ">
                     <label>
-                        <input type="text" class="box-input" name="pseudo" placeholder="Pseudo" required>
+                        <input type="text" class="box-input" name="utilisateur" placeholder="Nom d'utilisateur" required>
                         <input type="text" class="box-input" name="prenom" placeholder="Prénom" required>
                     </label>
                 </div>

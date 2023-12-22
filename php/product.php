@@ -43,15 +43,15 @@ $connect_site = mysqli_connect(DB_SERVER, DB_SITE,DB_SITEP,DB_SITE_NOM)
                     <a href="product.php" class="nav__link active-link">Produits</a>
                 </li>
                     <?php
-                    if(isset($_SESSION['pseudo'])){
-                        $pseudo = $_SESSION['pseudo'];
-                        $pseudo = ucfirst(strtolower($pseudo));
+                    if(isset($_SESSION['utilisateur'])){
+                        $utilisateur = $_SESSION['utilisateur']['nom'];
+                        $utilisateur = ucfirst(strtolower($utilisateur));
                         echo "
                 <li class='nav__item'>
                     <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='compte.php' class='nav__link'>$pseudo</a>
+                    <a href='compte.php' class='nav__link'>$utilisateur</a>
                 </li>";
                     }else {echo "
                 <li class='nav__item'>
@@ -71,7 +71,7 @@ $connect_site = mysqli_connect(DB_SERVER, DB_SITE,DB_SITEP,DB_SITE_NOM)
             <!-- Theme change button -->
             <i class='bx bx-moon change-theme' id="theme-button"></i>
             <?php
-            if (isset($_SESSION['pseudo'])) {
+            if (isset($_SESSION['utilisateur'])) {
                 echo "
             <div class='nav__shop' id='cart-shop'>
                 <a class='a_panier' href='panier.php'><i class='bx bx-shopping-bag' id='panier_button_index'></i></a>
@@ -114,6 +114,7 @@ $connect_site = mysqli_connect(DB_SERVER, DB_SITE,DB_SITEP,DB_SITE_NOM)
             </form>
         </article>";
         }
+        mysqli_close($connect_site);
         ?>
     </div>
 </section>

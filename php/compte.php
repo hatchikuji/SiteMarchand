@@ -3,19 +3,19 @@ include('config.php');
 // Initialiser la session
 session_start();
 $connect_site = mysqli_connect(DB_SERVER,DB_SITE,DB_SITEP,DB_SITE_NOM);
-$nom = mysqli_query($connect_site,"SELECT nom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$nom = mysqli_query($connect_site,"SELECT nom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['utilisateur']['nom']."';");
 $nom = mysqli_fetch_row($nom);
 
-$prenom = mysqli_query($connect_site,"SELECT prenom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$prenom = mysqli_query($connect_site,"SELECT prenom FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['utilisateur']['nom']."';");
 $prenom = mysqli_fetch_row($prenom);
 
-$email = mysqli_query($connect_site,"SELECT email FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$email = mysqli_query($connect_site,"SELECT email FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['utilisateur']['nom']."';");
 $email = mysqli_fetch_row($email);
 
-$numero_tel = mysqli_query($connect_site,"SELECT numero_tel FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$numero_tel = mysqli_query($connect_site,"SELECT numero_tel FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['utilisateur']['nom']."';");
 $numero_tel = mysqli_fetch_row($numero_tel);
 
-$adresse = mysqli_query($connect_site,"SELECT adresse FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['pseudo']."';");
+$adresse = mysqli_query($connect_site,"SELECT adresse FROM site_marchand_swann.utilisateurs WHERE pseudo='".$_SESSION['utilisateur']['nom']."';");
 $adresse = mysqli_fetch_row($adresse);
 ?>
 <!DOCTYPE html>
@@ -56,15 +56,15 @@ $adresse = mysqli_fetch_row($adresse);
                     <a href="product.php" class="nav__link">Produits</a>
                 </li>
                     <?php
-                    if(isset($_SESSION['pseudo'])){
-                        $pseudo = $_SESSION['pseudo'];
-                        $pseudo = ucfirst(strtolower($pseudo));
+                    if(isset($_SESSION['utilisateur'])){
+                        $utilisateur = $_SESSION['utilisateur']['nom'];
+                        $utilisateur = ucfirst(strtolower($utilisateur));
                         echo "
                 <li class='nav__item'>
                     <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='compte.php' class='nav__link  active-link'>$pseudo</a>
+                    <a href='compte.php' class='nav__link  active-link'>$utilisateur</a>
                 </li>";
                     }else {echo "
                 <li class='nav__item'>
@@ -86,7 +86,7 @@ $adresse = mysqli_fetch_row($adresse);
             <i class='bx bx-moon change-theme' id="theme-button"></i>
 
             <div class="nav__shop" id="cart-shop">
-                <i class='bx bx-shopping-bag' id="panier_button"></i>
+                <a class='a_panier' href='panier.php'><i class='bx bx-shopping-bag' id='panier_button_index'></i></a>
             </div>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -97,14 +97,11 @@ $adresse = mysqli_fetch_row($adresse);
 </header>
 <section class="section container" id="">
     <div class="container">
-        <div class="story__images">
-            <img src="../assets/img/product12.png" width="400" height="613" alt="pic">
-        </div>
         <div class="story__description">
             <?php echo "
             <h3>Nom: $nom[0]</h3>
             <h3>Prénom: $prenom[0]</h3>
-            <h3>Nom d'utilisateur: "?><?php echo $_SESSION['pseudo']?><?php echo"</h3>
+            <h3>Nom d'utilisateur: "?><?php echo $_SESSION['utilisateur']['nom']?><?php echo"</h3>
             <h3>Adresse mail: $email[0]</h3>
             <h3>Numero de téléphone: $numero_tel[0]</h3>
             <h3>Adresse: $adresse[0]</h3>

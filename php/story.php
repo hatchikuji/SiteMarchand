@@ -42,15 +42,15 @@ session_start();
                     <a href="product.php" class="nav__link">Produits</a>
                 </li>
                     <?php
-                    if(isset($_SESSION['pseudo'])){
-                        $pseudo = $_SESSION['pseudo'];
-                        $pseudo = ucfirst(strtolower($pseudo));
+                    if(isset($_SESSION['utilisateur'])){
+                        $utilisateur = $_SESSION['utilisateur']['nom'];
+                        $utilisateur = ucfirst(strtolower($utilisateur));
                         echo "
                 <li class='nav__item'>
                     <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='compte.php' class='nav__link'>$pseudo</a>
+                    <a href='compte.php' class='nav__link'>$utilisateur</a>
                 </li>";
                     }else {echo "
                 <li class='nav__item'>
@@ -72,7 +72,7 @@ session_start();
             <i class='bx bx-moon change-theme' id="theme-button"></i>
 
             <?php
-            if (isset($_SESSION['pseudo'])) {
+            if (isset($_SESSION['utilisateur'])) {
                 echo "
             <div class='nav__shop' id='cart-shop'>
                 <a class='a_panier' href='panier.php'><i class='bx bx-shopping-bag' id='panier_button_index'></i></a>
