@@ -99,10 +99,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $utilisateur = ucfirst(strtolower($utilisateur));
                     echo "
                 <li class='nav__item'>
-                    <a href='php/deconnexion.php' class='nav__link'>Deconnexion</a>
+                    <a href='deconnexion.php' class='nav__link'>Deconnexion</a>
                 </li>
                 <li class='nav__item'>
-                    <a href='php/compte.php' class='nav__link'>$utilisateur</a>
+                    <a href='compte.php' class='nav__link'>$utilisateur</a>
                 </li>";
                 } else {
                     echo "
@@ -159,6 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 // Affichez les détails du produit dans le panier
                 $chemin = "chemin";
+                $nom = "nom";
                 $nb_produit = mysqli_fetch_assoc(mysqli_query($connect_site,"SELECT COUNT(*) AS NB FROM site_marchand_swann.produits"));
 
                 $query_produits = mysqli_query($connect_site,"SELECT * FROM site_marchand_swann.produits WHERE produits.id=$idProduit");
@@ -167,7 +168,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <article class='products__card'>
                         <form method='post' action='panier.php'>
                         <img src='{$row[$chemin]}' class='products__img' alt='/img'>
-                        <p>Produit ID: $idProduit, Prix: $prixProduit, Quantité: <input type='number' name='nouvelleQuantite' placeholder='$quantite' min='1'>
+                        <h3 class='products__title'>{$row[$nom]}</h3>
+                        <p>Prix: $prixProduit, Quantité: <input type='number' name='nouvelleQuantite' value='$quantite' placeholder='1' min='1'>
                         <button type='submit' name='MettreAJourQuantite'>Mettre à jour</button>
                         <button type='submit' name='Supprimer'>Supprimer</button></p>
                         <input type='hidden' name='idProduit' value='$idProduit'>
