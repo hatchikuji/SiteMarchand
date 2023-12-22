@@ -1,5 +1,4 @@
 <?php
-// Assurez-vous que la session est démarrée
 include('config.php');
 session_start();
 $connect_site = mysqli_connect(DB_SERVER, DB_SITE,DB_SITEP,DB_SITE_NOM);
@@ -129,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="nav__shop" id="cart-shop">
-                <a class="a_panier" href="panier.php"><i class='bx bx-shopping-bag' id="panier_button_index"></i></a>
+                <a class="a_panier active-link" href="panier.php"><i class='bx bx-shopping-bag active-link' id="panier_button_index"></i></a>
             </div>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -146,10 +145,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (isset($_SESSION['utilisateur']['panier']) && !empty($_SESSION['utilisateur']['panier'])) {
             $prixTotal = 0;
 
-            foreach ($_SESSION['utilisateur']['panier'] as $produit) {
-                $idProduit = $produit['idProduit'];
-                $prixProduit = $produit['prixProduit'];
-                $quantite = $produit['quantite'];
+            foreach ($_SESSION['utilisateur']['panier'] as $produitPanier) {
+                $idProduit = $produitPanier['idProduit'];
+                $prixProduit = $produitPanier['prixProduit'];
+                $quantite = $produitPanier['quantite'];
 
                 // Calculez le sous-total pour chaque produit
                 $sousTotal = $prixProduit * $quantite;
@@ -169,20 +168,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <form method='post' action='panier.php'>
                         <img src='{$row[$chemin]}' class='products__img' alt='/img'>
                         <h3 class='products__title'>{$row[$nom]}</h3>
-                        <p>Prix: $prixProduit, Quantité: <input type='number' name='nouvelleQuantite' value='$quantite' placeholder='1' min='1'>
+                        <span class='products__price'>Prix: Rs.$prixProduit, Quantité: <input type='number' name='nouvelleQuantite' value='$quantite' placeholder='1' min='1'>
                         <button type='submit' name='MettreAJourQuantite'>Mettre à jour</button>
-                        <button type='submit' name='Supprimer'>Supprimer</button></p>
+                        <button type='submit' name='Supprimer'>Supprimer</button></span>
                         <input type='hidden' name='idProduit' value='$idProduit'>
                         </form>
                     </article>";
                 }
             }
-            echo "<p>Prix total: $prixTotal</p>";
+            echo "
+                <p>Prix total: Rs.$prixTotal</p>
+            ";
         }
         else {
             echo "<p>Le panier est vide.</p>";
         }
-
         ?>
     </div>
 </section>
