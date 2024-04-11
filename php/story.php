@@ -99,7 +99,7 @@ session_start();
 
             <p class="story__description">
                 Les nouvelles et élégantes montres sorties cette année
-                vous sont présentées ici, découvrez les maintenant.
+                vous sont présentées ici, découvrez-les maintenant
             </p>
         </div>
 
